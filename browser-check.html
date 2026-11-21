@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ky">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laptop Check</title>
+<style>
+:root{color-scheme:light;--ink:#142821;--muted:#465d52;--green:#176447;--line:#c8d9cd;--paper:#f5f8f3}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #945600;outline-offset:4px}button{border:1px solid var(--line);border-radius:12px;padding:.65rem 1rem;background:white;color:var(--ink);min-height:46px}button:hover{border-color:var(--green);background:#edf7ee}button[aria-pressed=true]{background:#deefe2;border-color:var(--green);font-weight:700}.primary{background:var(--green);color:white;border-color:var(--green);font-weight:700}.primary:hover{background:#104e37;color:white}
+header{border-bottom:1px solid var(--line);background:#fff}.bar{max-width:1100px;margin:auto;padding:1rem clamp(1rem,5vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:-.035em}.brand span{color:var(--green)}.languages,.actions{display:flex;flex-wrap:wrap;gap:.6rem}.languages button{padding:.35rem .7rem}.wrap{max-width:1100px;margin:auto;padding:clamp(1rem,5vw,3rem)}.hero{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:2rem;padding:clamp(1.3rem,5vw,3.5rem);background:#e7f1e5;border:1px solid var(--line);border-radius:24px}.hero h1{font-size:clamp(2.25rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.055em;margin:0 0 1rem}.hero p{max-width:38ch;color:var(--muted);margin:0}.illustration{padding:1.2rem 0;max-width:310px;width:100%;margin:auto}.screen{border:9px solid #173c2d;border-radius:14px 14px 4px 4px;min-height:155px;background:#fcfffa;display:grid;place-items:center}.screen-mark{background:#d8efdc;color:#19593e;border-radius:50%;width:75px;height:75px;display:grid;place-items:center;font-size:2.7rem}.base{height:12px;background:#173c2d;width:112%;margin-left:-6%;border-radius:2px 2px 60px 60px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.card,.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(1.15rem,3.5vw,2rem)}.card h2,h1,h2{line-height:1.15;margin:0 0 .65rem}.card p,.lead{color:var(--muted)}.card p{margin:0 0 1.1rem}.panel{max-width:730px;margin:auto}.panel h1{font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.04em}.panel .actions{margin-top:1.3rem}.progress{font-weight:650;color:var(--green);margin:0 0 .7rem}progress{width:100%;height:9px;accent-color:var(--green);display:block;margin:0 0 1.5rem}.stage{margin-top:1rem;padding:1rem;border-radius:12px;background:#edf4ed}.stage:empty{display:none}.key-grid{display:flex;flex-wrap:wrap;gap:.5rem}.key{min-width:3rem;padding:.45rem;text-align:center;border:1px solid var(--line);border-radius:6px;background:white}.key.hit{background:#cae9cf;font-weight:800}.swatch{height:160px;border-radius:8px;border:1px solid #84988b;display:block;width:100%;touch-action:manipulation}.swatch:fullscreen{height:100%;border:0}.preview{width:min(100%,390px);display:block;border-radius:8px}.result{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--line)}.result strong{text-align:right}.result strong[data-result=good]{color:#176447}.result strong[data-result=bad]{color:#9b321a}.report-grid{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:1rem 0}.report-grid dd{margin:0;overflow-wrap:anywhere}.report-grid dt{font-weight:650}.status{color:var(--muted);margin:.7rem 0 0}.status:empty{display:none}.nav{border-top:1px solid var(--line);padding-top:1rem}.pad{display:grid;place-items:center;text-align:center;min-height:100px;background:#fff;border:2px dashed var(--line);border-radius:10px;padding:.5rem}.spec{margin:1rem 0}.spec input{max-width:100%}@media(max-width:620px){.hero,.cards{grid-template-columns:1fr}.illustration{display:none}.hero{padding:1.5rem}.actions button{flex:1 1 auto}}@media print{header,button,input,progress{display:none!important}.panel{border:0}.wrap{padding:0}}
+textarea{font:inherit;resize:vertical}.seller-panel{margin:1.25rem 0 1.6rem}.seller-panel label{display:block;font-weight:650;margin:.65rem 0 .25rem}.seller-panel input,.seller-panel textarea{width:100%;padding:.55rem .7rem;border:1px solid #84988b;border-radius:8px;background:white;color:var(--ink)}.seller-panel textarea:focus-visible{outline:3px solid #945600;outline-offset:4px}.claim-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}.comparison{margin-top:1rem}.comparison small{display:block;color:var(--muted);overflow-wrap:anywhere}.comparison .result[data-result=bad] strong{color:#9b321a}.comparison .result[data-result=good] strong{color:#176447}@media(max-width:500px){.claim-fields{grid-template-columns:1fr}}@media print{.seller-panel form,.listing-input{display:none!important}}
+.history-details{margin:.8rem 0}.history-details summary{cursor:pointer;font-weight:650}.download-link{display:inline-flex;align-items:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--green);border-radius:12px;color:var(--green);font-weight:700}.download-link:focus-visible{outline:3px solid #945600;outline-offset:4px}@media print{.download-link{display:none}}
+</style>
+</head>
+<body>
+<header><div class="bar"><div class="brand">Laptop<span>Check</span></div><div class="languages" role="group" aria-label="Language"><button id="ky" lang="ky" aria-pressed="true">Кыргызча</button><button id="ru" lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<main class="wrap" id="app"></main>
+<script>
+const copy = {
+  ky: {
+    title:"Ноутбукту сатып алардан мурун текшериңиз",intro:"Сайтты сатып алгыңыз келген ноутбуктан ачыңыз. Ар бир кадамда эмне кылуу керектигин көрсөтөбүз.",
+    quick:"Тез текшерүү",quickDesc:"Экранды, бир нече баскычты жана үндү текшериңиз.",full:"Толук текшерүү",fullDesc:"Кошумча камераны, микрофонду, тачпадды, кубаттагычты жана портторду текшериңиз.",start:"Баштоо",
+    specs:"Ноутбуктун мүнөздөмөлөрү",specDesc:"RAM, процессор жана сактагыч тууралуу даяр отчёт бар болсо, аны ачыңыз. Отчёт жок болсо, кийинки кадамга өтүңүз.",localSpecDesc:"Ноутбуктун эс тутумун, процессорун жана дисктин көлөмүн Windows аркылуу текшеребиз.",open:"Отчётту ачуу",loaded:"Отчёт ачылды.",invalid:"Бул отчётту окуй алган жокпуз. Башка файлды тандаңыз же улантыңыз.",scanning:"Windows маалыматын окуп жатабыз…",scanned:"Мүнөздөмөлөр Windows аркылуу алынды.",scanFailed:"Windows маалыматын окуй алган жокпуз. Кайра аракет кылыңыз же улантыңыз.",retryScan:"Кайра текшерүү",ram:"Эс тутум (RAM)",cpu:"Процессор",storage:"Сактагыч",windowsStorage:"Windows орнотулган диск",model:"Модель",next:"Улантуу",
+    display:"Экран",displayHint:"Түстөрдү алмаштырып көрүңүз. Сызыктар, кара тактар же бүлбүлдөө барбы?",color:"Кийинки түс",expand:"Толук экран",
+    keyboard:"Баскычтоп",keyboardHint:"Төмөнкү талааны басып, көрсөтүлгөн баскычтарды бирден басыңыз. Басылган баскычтар белгиленет.",keyArea:"Баскычтарды текшерүү талаасы",seen:"Белгиленди",
+    sound:"Үн",soundHint:"Үндү ойнотуңуз. Үн так угулдубу?",play:"Үндү ойнотуу",
+    pad:"Тачпад",padHint:"Ноутбуктун тачпады менен көрсөткүчтү жылдырып, төмөнкү талааны басыңыз.",tap:"Бул жерди басыңыз",tapped:"Басуу катталды",
+    camera:"Камера",cameraHint:"Камераны күйгүзүп, браузерден уруксат бериңиз. Өзүңүздү көрүп жатасызбы?",mic:"Микрофон",micHint:"Микрофонду күйгүзүп, бир-эки сөз айтыңыз. Көрсөткүч кыймылдап жатабы?",enable:"Күйгүзүү",blocked:"Түзмөк ачылган жок. Уруксатты текшериңиз же бул кадамды өткөрүңүз.",waiting:"Браузердин уруксатын күтө туруңуз.",detected:"Үн байкалды",
+    charge:"Кубаттагыч",chargeHint:"Сатуучу кубаттагычты туташтырсын. Windows батарея кубатталып жатканын көрсөтүп жатабы?",battery:"Батарея",batteryHint:"Сатуучу кубаттагычты бир азга сууруп көрсүн. Ноутбук күйүп тура бердиби? Бул текшерүү батарея канча убакытка жетерин көрсөтпөйт.",ports:"Порттор",portsHint:"Сизге керектүү портко шайманды туташтырып көрүңүз. Мисалы, чычканды туташтырсаңыз, көрсөткүч кыймылдайбы?",
+    graphics:"Графика (видеокарта)",windowsEdition:"Windows чыгарылышы",windowsBuild:"Windows түзүмүнүн номери",batteryCharge:"Батареянын учурдагы заряды",batteryCapacity:"Баштапкы сыйымдуулукка салыштырмалуу",wifi:"Wi-Fi",wifiHint:"Windows Wi-Fi тармагына туташканын текшериңиз. Жаңы өтмөктө башка сайтты ачып көрүңүз. Ноутбук кабель аркылуу интернетке туташып турса, бул кадамды өткөрсөңүз болот.",hinges:"Капкак жана илмектер",hingesHint:"Капкакты акырын ачып-жабыңыз. Капкак кыйшайып же бошоп калган жокпу? Аны күч менен ачпаңыз.",
+    good:"Иштеди",bad:"Көйгөй байкалды",skip:"Текшере алган жокмун",unseen:"Текшерилген жок",back:"Артка",home:"Башкы бет",summary:"Текшерүүнүн жыйынтыгы",summaryHint:"Жыйынтык ушул жолку текшерүүнү көрсөтөт.",print:"Басып чыгаруу",restart:"Жаңы текшерүү",extra:"Толук текшерүүнү улантуу",step:"Кадам"
+  },
+  ru: {
+    title:"Проверьте ноутбук перед покупкой",intro:"Откройте сайт на ноутбуке, который хотите купить. Мы покажем, что делать на каждом шаге.",
+    quick:"Быстрая проверка",quickDesc:"Проверьте экран, несколько клавиш и звук.",full:"Полная проверка",fullDesc:"Дополнительно проверьте камеру, микрофон, тачпад, зарядку и разъёмы.",start:"Начать",
+    specs:"Характеристики ноутбука",specDesc:"Если у вас есть готовый отчёт о памяти, процессоре и диске, откройте его. Если отчёта нет, переходите дальше.",localSpecDesc:"Мы проверим память, процессор и размер диска через Windows.",open:"Открыть отчёт",loaded:"Отчёт открыт.",invalid:"Не удалось прочитать отчёт. Выберите другой файл или продолжите проверку.",scanning:"Читаем данные Windows…",scanned:"Характеристики получены из Windows.",scanFailed:"Не удалось прочитать данные Windows. Повторите попытку или продолжите проверку.",retryScan:"Проверить ещё раз",ram:"Оперативная память",cpu:"Процессор",storage:"Размер диска",windowsStorage:"Диск с Windows",model:"Модель",next:"Продолжить",
+    display:"Экран",displayHint:"Переключайте цвета. Видите полосы, тёмные точки или мерцание?",color:"Следующий цвет",expand:"На весь экран",
+    keyboard:"Клавиатура",keyboardHint:"Нажмите на поле ниже и по очереди нажмите показанные клавиши. Сработавшие клавиши будут отмечены.",keyArea:"Поле для проверки клавиш",seen:"Отмечено",
+    sound:"Звук",soundHint:"Включите короткий звук. Слышно ли его чётко?",play:"Включить звук",
+    pad:"Тачпад",padHint:"Подвигайте указатель тачпадом и нажмите на поле ниже.",tap:"Нажмите здесь",tapped:"Нажатие обнаружено",
+    camera:"Камера",cameraHint:"Включите камеру и разрешите доступ в браузере. Видите себя на экране?",mic:"Микрофон",micHint:"Включите микрофон и скажите пару слов. Двигается ли индикатор?",enable:"Включить",blocked:"Устройство не открылось. Проверьте разрешение или пропустите этот шаг.",waiting:"Ждём разрешения браузера.",detected:"Слышен звук",
+    charge:"Зарядка",chargeHint:"Попросите продавца подключить зарядку. Показывает ли Windows, что батарея заряжается?",battery:"Батарея",batteryHint:"Попросите продавца ненадолго отключить зарядку. Ноутбук остался включённым? Эта проверка не показывает, на сколько часов хватит батареи.",ports:"Разъёмы",portsHint:"Подключите устройство к нужному разъёму. Например, подключите мышь и проверьте, двигается ли указатель.",
+    graphics:"Графика (видеокарта)",windowsEdition:"Выпуск Windows",windowsBuild:"Номер сборки Windows",batteryCharge:"Текущий заряд батареи",batteryCapacity:"Ёмкость от первоначальной",wifi:"Wi-Fi",wifiHint:"Убедитесь, что Windows подключена к Wi-Fi. Откройте другой сайт в новой вкладке. Если ноутбук подключён к интернету кабелем, этот шаг можно пропустить.",hinges:"Крышка и петли",hingesHint:"Медленно откройте и закройте крышку. Заметьте, если она перекошена, шатается или заедает. Не применяйте силу.",
+    good:"Работает",bad:"Есть проблема",skip:"Не удалось проверить",unseen:"Не проверено",back:"Назад",home:"На главную",summary:"Результаты проверки",summaryHint:"Здесь перечислены результаты этой проверки.",print:"Распечатать",restart:"Новая проверка",extra:"Продолжить полную проверку",step:"Шаг"
+  }
+};
+const quickChecks = ["specs","display","keyboard","sound"];
+Object.assign(copy.ky, {
+  browserSummary:"Браузердеги тез текшерүүнүн жыйынтыгы", browserLimits:"Бул жерде экранды, баскычтопту жана үндү текшердик. RAM, процессор, диск жана батарея жөнүндө маалымат алуу үчүн Windows текшергичин ачыңыз.", downloadChecker:"Windows текшергичин жүктөп алуу",
+  fullDesc:"Камераны, батареяны, Wi-Fi, Bluetooth, туташтыргычтарды жана корпусту да текшериңиз.",
+  detailTitle:"Кошумча мүнөздөмөлөр", cpuCores:"Процессордун өзөктөрү", cpuThreads:"Процессордун агымдары", ramSpeed:"Windows көрсөткөн эс тутум ылдамдыгы",
+  displayMode:"Экрандын учурдагы режими", driveModel:"Windows дискинин модели", driveBus:"Дисктин туташуу түрү", freeSpace:"Windows бөлүгүндөгү бош орун",
+  batteryCycles:"Батареянын заряд циклдери", batteryDesign:"Батареянын баштапкы сыйымдуулугу", batteryFull:"Толук заряддагы азыркы сыйымдуулук",
+  diskTemp:"Дисктин температурасы", diskCycles:"Дисктин күйгүзүлгөн саны", diskWear:"Диск ресурсу канча колдонулган (болжол)", diskErrors:"Дисктин маалымат каталары", diskWarning:"Дисктин эскертүүсү",
+  diskWarningYes:"Диск эскертүү берди", diskWarningNo:"Активдүү эскертүү жок",
+  externalDisplay:"Сырткы экран", externalDisplayHint:"Эгер керектүү кабель жана монитор бар болсо, ноутбукка туташтырыңыз. Монитордон сүрөт көрүндүбү?",
+  bluetooth:"Bluetooth", bluetoothHint:"Сатуучунун уруксаты менен чычканды же кулакчындарды туташтырып, иштеп жатканын текшериңиз. Шайман жок болсо, кадамды өткөрүңүз.",
+  headphone:"Кулакчын уясы", headphoneHint:"Зымдуу кулакчынды сайып, үн ойнотуңуз. Үн эки кулакчындан тең чыгабы?",
+  lidWake:"Уйкудан ойгонуу", lidWakeHint:"Сатуучунун уруксаты менен ноутбукту уйку режимине өткөрүп, кайра ойготуңуз. Экран жана баскычтоп кайра иштедиби?",
+  caseCheck:"Корпустун абалы", caseCheckHint:"Корпусту жана портторду караңыз. Жарака, ийилүү же ачылып калган жер барбы? Корпусту ачпаңыз.",
+  sellerTitle:"Сатуучу эмне деп айткан?", sellerHint:"Жарыядагы же сатуучу айткан мүнөздөмөлөрдү жазыңыз. Билбеген жерлерди бош калтырыңыз.",
+  listing:"Жарыянын тексти", aiRead:"Жарыяны AI менен окуу", aiPrivacy:"Бул баскычты бассаңыз, жарыянын тексти OpenAI'га жөнөтүлөт. Ноутбуктун текшерүү жыйынтыгы жөнөтүлбөйт. Телефон номерин жана жеке маалыматты өчүрүңүз.",
+  aiReading:"Жарыяны окуп жатабыз…", aiFound:"Табылган маанилерди текшерип, анан салыштырыңыз.", aiEmpty:"Так мүнөздөмө табылган жок. Белгилүү маалыматты жазыңыз.", aiOff:"AI азыр жеткиликсиз. Төмөнкү талааларды өзүңүз толтурсаңыз болот.", enterListing:"Адегенде жарыянын текстин чаптаңыз.",
+  compare:"Салыштыруу", match:"Дал келет", closeSize:"Көлөмү жакын", mismatch:"Дал келбейт", review:"Тактоо керек", sellerValue:"Сатуучу", scannedValue:"Ноутбуктан окулду", noClaims:"Салыштыруу үчүн жок дегенде бир мүнөздөмө жазыңыз.",
+  diskHours:"Windows дискинин иштеген сааттары", hours:"саат", hoursUnavailable:"Дисктин иштеген сааттарын окуй алган жокпуз", installDate:"Windows орнотулган күн", oldestBoot:"Журналдагы эң эски иштетүү",
+  hoursHint:"Бул көрсөткүч Windows орнотулган дискке таандык. Диск алмаштырылган болсо, мурунку дисктин сааттары эсепке кирбейт. Ноутбуктун жалпы иштеген убактысы белгисиз.",
+  historyTitle:"Диск жана Windows тарыхы", historyHint:"Бул даталар ноутбук алгач качан күйгүзүлгөнүн тастыктабайт."
+});
+Object.assign(copy.ru, {
+  browserSummary:"Результаты быстрой проверки в браузере", browserLimits:"Здесь можно проверить экран, клавиатуру и звук. Чтобы узнать объём памяти, модель процессора, размер диска и состояние батареи, откройте приложение для Windows.", downloadChecker:"Скачать приложение для Windows",
+  fullDesc:"Дополнительно проверьте камеру, батарею, Wi-Fi, Bluetooth, разъёмы и корпус.",
+  detailTitle:"Подробные характеристики", cpuCores:"Ядра процессора", cpuThreads:"Потоки процессора", ramSpeed:"Скорость памяти по данным Windows",
+  displayMode:"Текущий режим экрана", driveModel:"Модель диска с Windows", driveBus:"Тип подключения диска", freeSpace:"Свободное место в разделе Windows",
+  batteryCycles:"Циклы зарядки батареи", batteryDesign:"Исходная ёмкость батареи", batteryFull:"Текущая ёмкость при полном заряде",
+  diskTemp:"Температура диска", diskCycles:"Включения диска", diskWear:"Использованный ресурс диска (оценка)", diskErrors:"Ошибки данных на диске", diskWarning:"Предупреждение диска",
+  diskWarningYes:"Диск сообщает о проблеме", diskWarningNo:"Активных предупреждений нет",
+  externalDisplay:"Внешний монитор", externalDisplayHint:"Если есть подходящий кабель и монитор, подключите его. Появилось ли изображение на внешнем экране?",
+  bluetooth:"Bluetooth", bluetoothHint:"С разрешения продавца подключите мышь или наушники и проверьте, работают ли они. Если проверять нечем, пропустите шаг.",
+  headphone:"Разъём для наушников", headphoneHint:"Подключите проводные наушники и включите звук. Звук слышен с обеих сторон?",
+  lidWake:"Выход из сна", lidWakeHint:"С разрешения продавца переведите ноутбук в режим сна, затем разбудите его. Экран и клавиатура снова работают?",
+  caseCheck:"Состояние корпуса", caseCheckHint:"Посмотрите на корпус и разъёмы. Есть ли трещины, вмятины или разошедшиеся края? Разбирать ноутбук не нужно.",
+  sellerTitle:"Что обещал продавец?", sellerHint:"Укажите характеристики из объявления или со слов продавца. Оставьте неизвестные поля пустыми.",
+  listing:"Текст объявления", aiRead:"Прочитать объявление с ИИ", aiPrivacy:"Эта кнопка отправляет текст объявления в OpenAI. Данные проверки ноутбука остаются здесь. Удалите номера телефонов и личные данные.",
+  aiReading:"Читаем объявление…", aiFound:"Проверьте найденные значения и нажмите «Сравнить».", aiEmpty:"Не нашли точных характеристик. Введите то, что знаете.", aiOff:"ИИ сейчас недоступен. Вы можете заполнить поля вручную.", enterListing:"Сначала вставьте текст объявления.",
+  compare:"Сравнить", match:"Совпадает", closeSize:"Близкий объём", mismatch:"Не совпадает", review:"Нужно уточнить", sellerValue:"Продавец", scannedValue:"Что показал ноутбук", noClaims:"Введите хотя бы одну характеристику для сравнения.",
+  diskHours:"Часы работы диска с Windows", hours:"ч", hoursUnavailable:"Не удалось прочитать счётчик часов", installDate:"Дата установки Windows", oldestBoot:"Самый ранний запуск в журнале",
+  hoursHint:"Это счётчик диска, на котором установлена Windows. Если диск заменили, часы старого диска не учитываются. Общее время работы ноутбука неизвестно.",
+  historyTitle:"Сведения о диске и история Windows", historyHint:"Эти даты не подтверждают дату первого включения ноутбука."
+});
+const fullChecks = [...quickChecks,"pad","camera","mic","charge","battery","ports","wifi","hinges","caseCheck","bluetooth","externalDisplay","headphone","lidWake"];
+const app = document.querySelector("#app");
+const localChecker = document.documentElement.hasAttribute("data-local-checker") &&
+  location.protocol === "http:" && ["localhost", "127.0.0.1"].includes(location.hostname);
+const listingAi = localChecker && document.documentElement.hasAttribute("data-listing-ai");
+const params = new URLSearchParams(location.search);
+const browserQuick = !localChecker && params.get("quick") === "1";
+const browserChecks = quickChecks.slice(1);
+let lang = browserQuick && params.get("lang") === "ru" ? "ru" : "ky";
+let mode = browserQuick ? "quick" : null;
+let step = 0;
+let results = {};
+let report = null;
+let seller = {listing:"", claims:{}, compared:false};
+let cleanup = () => {};
+const t = key => copy[lang][key];
+const checks = () => browserQuick ? browserChecks : mode === "full" ? fullChecks : quickChecks;
+const landing = () => `./?lang=${lang}`;
+const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+})[char]);
+
+function button(id, label, primary = false) {
+  return `<button type="button" id="${id}"${primary ? ' class="primary"' : ""}>${t(label)}</button>`;
+}
+function on(id, action) { document.getElementById(id).addEventListener("click", action); }
+function start(selected) {
+  mode = selected;
+  step = 0;
+  results = {};
+  report = null;
+  seller = {listing:"", claims:{}, compared:false};
+  render();
+}
+function render(focus = true) {
+  cleanup();
+  cleanup = () => {};
+  document.documentElement.lang = lang;
+  for (const code of ["ky","ru"]) document.getElementById(code).setAttribute("aria-pressed", String(code === lang));
+  if (!mode) {
+    app.innerHTML = `<section class="hero"><div><h1 tabindex="-1">${t("title")}</h1><p>${t("intro")}</p></div><div class="illustration" aria-hidden="true"><div class="screen"><div class="screen-mark">✓</div></div><div class="base"></div></div></section>
+      <div class="cards">${["quick","full"].map(kind => `<section class="card"><h2>${t(kind)}</h2><p>${t(kind+"Desc")}</p>${button(kind+"Start",kind,kind==="quick")}</section>`).join("")}</div>`;
+    on("quickStart", () => start("quick"));
+    on("fullStart", () => start("full"));
+  } else if (step >= checks().length) {
+    renderSummary();
+  } else {
+    renderStep(checks()[step]);
+  }
+  if (focus) app.querySelector("h1").focus();
+}
+function renderStep(check) {
+  app.innerHTML = `<section class="panel"><p class="progress">${t("step")} ${step+1} / ${checks().length}</p>
+    <progress aria-label="${t("step")}" value="${step+1}" max="${checks().length}"></progress>
+    <h1 tabindex="-1">${t(check)}</h1><p class="lead">${t(check === "specs" ? (localChecker ? "localSpecDesc" : "specDesc") : check+"Hint")}</p>
+    <div class="stage" id="stage"></div><p class="status" id="status" role="status"></p>
+    <div class="actions">${check === "specs" ? button("next","next",true) : button("good","good",true)+button("bad","bad")+button("skip","skip")}</div>
+    <div class="actions nav">${button("back",step ? "back" : "home")}</div></section>`;
+  on("back", () => {
+    if (step) step--;
+    else if (browserQuick) { location.href = landing(); return; }
+    else mode = null;
+    render();
+  });
+  if (check === "specs") on("next", () => { step++; render(); });
+  else for (const result of ["good","bad","skip"]) {
+    on(result, () => { results[check] = result; step++; render(); });
+  }
+  const stage = document.getElementById("stage");
+  const status = message => { document.getElementById("status").textContent = message; };
+  if (check === "specs") setupReport(stage,status);
+  if (check === "display") setupDisplay(stage);
+  if (check === "keyboard") setupKeyboard(stage,status);
+  if (check === "sound" || check === "headphone") setupSound(stage,status);
+  if (check === "pad") {
+    stage.innerHTML = `<button id="tap" class="pad">${t("tap")}</button>`;
+    on("tap", () => status(t("tapped")));
+  }
+  if (["camera","mic"].includes(check)) setupMedia(check,stage,status);
+}
+function reportHtml() {
+  if (!report) return "";
+  const {diskHours, installDate, oldestBoot, details, ...specs} = report;
+  const row = ([key,value]) => {
+    const display = value?.label ? t(value.label) : value;
+    return `<dt>${t(key)}</dt><dd>${escapeHtml(display ?? t("unseen"))}</dd>`;
+  };
+  const specRows = `<dl class="report-grid">${Object.entries(specs).map(row).join("")}</dl>`;
+  if (diskHours === undefined) return specRows;
+  const formattedHours = diskHours === null ? t("hoursUnavailable") :
+    `${new Intl.NumberFormat(lang).format(diskHours)} ${t("hours")}`;
+  const extras = details ? `<details class="history-details"${mode === "full" ? " open" : ""}><summary>${t("detailTitle")}</summary>
+    <dl class="report-grid">${Object.entries(details).map(row).join("")}</dl></details>` : "";
+  return `${specRows}${extras}<details class="history-details"><summary>${t("historyTitle")}</summary>
+    <dl class="report-grid">${row(["diskHours",formattedHours])}</dl><p class="lead">${t("hoursHint")}</p>
+    <dl class="report-grid">${Object.entries({installDate,oldestBoot}).map(row).join("")}</dl><p class="lead">${t("historyHint")}</p></details>`;
+}
+function readReport(data, fromWindows = false) {
+  const validNumber = value => Number.isFinite(value) && value > 0;
+  const validText = value => typeof value === "string" && value.trim();
+  if (data?.version !== 1) throw new Error("Unsupported report version");
+  const ram = validNumber(data.ramGiB) ? data.ramGiB+" GB" : null;
+  const cpu = validText(data.processor) ? data.processor.trim().slice(0,160) : null;
+  const disk = validNumber(data.storageGB) ? data.storageGB+" GB" : null;
+  if (fromWindows ? !(ram || cpu || disk) : !ram) throw new Error("Incomplete report");
+  const fields = {};
+  if (validText(data.model)) fields.model = data.model.trim().slice(0,160);
+  fields.ram = ram;
+  fields.cpu = cpu;
+  fields[fromWindows && data.storageScope === "windowsDisk" ? "windowsStorage" : "storage"] = disk;
+  if (fromWindows) {
+    fields.graphics = validText(data.graphics) ? data.graphics.trim().slice(0,240) : null;
+    fields.windowsEdition = validText(data.windowsEdition) ? data.windowsEdition.trim().slice(0,120) : null;
+    if (validText(data.windowsBuild)) fields.windowsBuild = data.windowsBuild.trim().slice(0,24);
+    const charge = data.batteryChargePercent;
+    fields.batteryCharge = Number.isFinite(charge) && charge >= 0 && charge <= 100 ? charge+"%" : null;
+    fields.batteryCapacity = validNumber(data.batteryCapacityPercent) ? data.batteryCapacityPercent+"%" : null;
+    fields.diskHours = Number.isInteger(data.diskPowerOnHours) && data.diskPowerOnHours >= 0 ? data.diskPowerOnHours : null;
+    fields.installDate = /^\d{4}-\d{2}-\d{2}$/.test(data.windowsInstallDate) ? data.windowsInstallDate : null;
+    fields.oldestBoot = /^\d{4}-\d{2}-\d{2}$/.test(data.oldestRecordedBootDate) ? data.oldestRecordedBootDate : null;
+    const counter = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
+    const withUnit = (value, unit) => Number.isFinite(value) && value >= 0 ? value+" "+unit : null;
+    fields.details = {
+      cpuCores: validNumber(data.cpuCores) ? data.cpuCores : null,
+      cpuThreads: validNumber(data.cpuThreads) ? data.cpuThreads : null,
+      ramSpeed: Array.isArray(data.ramSpeeds) && data.ramSpeeds.some(validNumber) ?
+        data.ramSpeeds.filter(validNumber).join(" / ")+" MHz" : null,
+      displayMode: Array.isArray(data.displayModes) && data.displayModes.some(validText) ?
+        data.displayModes.filter(validText).join(" / ").slice(0,160) : null,
+      driveModel: validText(data.diskModel) ? data.diskModel.trim().slice(0,160) : null,
+      driveBus: validText(data.diskBusType) ? data.diskBusType.trim().slice(0,32) : null,
+      freeSpace: withUnit(data.systemVolumeFreeGB,"GB"),
+      batteryCycles: counter(data.batteryCycles),
+      batteryDesign: withUnit(data.batteryDesignMWh,"mWh"),
+      batteryFull: withUnit(data.batteryFullMWh,"mWh"),
+      diskTemp: Number.isFinite(data.diskTemperatureC) ? data.diskTemperatureC+" °C" : null,
+      diskCycles: counter(data.diskPowerCycles),
+      diskWear: withUnit(data.diskEnduranceUsedPercent,"%"),
+      diskErrors: counter(data.diskMediaErrors),
+      diskWarning: typeof data.diskCriticalWarning === "boolean" ? {label:data.diskCriticalWarning ? "diskWarningYes" : "diskWarningNo"} : null
+    };
+  }
+  return fields;
+}
+function setupReport(stage,status) {
+  if (localChecker) {
+    stage.innerHTML = `<div id="imported">${reportHtml()}</div>${button("retryScan","retryScan")}`;
+    let controller;
+    cleanup = () => controller?.abort();
+    async function scan() {
+      controller = new AbortController();
+      const retry = stage.querySelector("#retryScan");
+      retry.disabled = true;
+      status(t("scanning"));
+      try {
+        const response = await fetch("/api/specs", {signal: controller.signal});
+        if (!response.ok) throw new Error("Scan failed");
+        const data = await response.json();
+        if (!stage.isConnected) return;
+        report = readReport(data, true);
+        stage.querySelector("#imported").innerHTML = reportHtml();
+        status(t("scanned"));
+      } catch {
+        if (stage.isConnected) status(t("scanFailed"));
+      } finally {
+        if (stage.isConnected) retry.disabled = false;
+      }
+    }
+    on("retryScan", scan);
+    if (!report) scan();
+    return;
+  }
+  stage.innerHTML = `<label for="file"><strong>${t("open")}</strong></label><div class="spec"><input id="file" type="file" accept=".json,application/json"></div><div id="imported">${reportHtml()}</div>`;
+  const fileInput = document.getElementById("file");
+  fileInput.addEventListener("change", async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    try {
+      if (file.size > 64000) throw new Error();
+      const data = JSON.parse(await file.text());
+      if (!stage.isConnected || fileInput.files[0] !== file) return;
+      report = readReport(data);
+      stage.querySelector("#imported").innerHTML = reportHtml();
+      status(t("loaded"));
+    } catch {
+      if (!stage.isConnected || fileInput.files[0] !== file) return;
+      report = null;
+      stage.querySelector("#imported").replaceChildren();
+      status(t("invalid"));
+    }
+  });
+}
+function setupDisplay(stage) {
+  const colors = ["#ffffff","#111111","#ee1717","#0bbd53","#204efa"];
+  let index = 0;
+  stage.innerHTML = `<button id="swatch" class="swatch" aria-label="${t("color")}"></button><div class="actions">${button("color","color")}${button("expand","expand")}</div>`;
+  const swatch = document.getElementById("swatch");
+  function paint() { swatch.style.backgroundColor = colors[index]; }
+  function advance() { index = (index+1) % (mode === "quick" ? 2 : colors.length); paint(); }
+  paint();
+  on("color",advance);
+  on("swatch",advance);
+  if (swatch.requestFullscreen) on("expand", () => swatch.requestFullscreen().catch(() => {}));
+  else document.getElementById("expand").hidden = true;
+}
+function setupKeyboard(stage,status) {
+  const keys = mode === "quick" ? ["Q","A","Z","J","P","Space","Enter"] : [..."QWERTYUIOPASDFGHJKLZXCVBNM1234567890","Space","Enter","Backspace","ArrowUp","ArrowLeft","ArrowDown","ArrowRight"];
+  const names = {Space:"␣",ArrowUp:"↑",ArrowLeft:"←",ArrowDown:"↓",ArrowRight:"→"};
+  stage.innerHTML = `<div tabindex="0" aria-label="${t("keyArea")}" class="key-grid">${keys.map(key => `<span class="key" data-key="${key}">${names[key] || key}</span>`).join("")}</div>`;
+  const hit = new Set();
+  stage.firstElementChild.addEventListener("keydown", event => {
+    const key = event.code.replace(/^(Key|Digit)/,"");
+    if (!keys.includes(key)) return;
+    event.preventDefault();
+    hit.add(key);
+    stage.querySelector(`[data-key="${key}"]`).classList.add("hit");
+    status(`${t("seen")}: ${hit.size} / ${keys.length}`);
+  });
+}
+function setupSound(stage,status) {
+  stage.innerHTML = button("play","play");
+  let context;
+  cleanup = () => { if (context && context.state !== "closed") context.close().catch(() => {}); };
+  on("play", async () => {
+    try {
+      context ||= new AudioContext();
+      await context.resume();
+      if (!stage.isConnected) return;
+      const tone = context.createOscillator();
+      const volume = context.createGain();
+      tone.frequency.value = 440;
+      volume.gain.value = 0.12;
+      volume.gain.exponentialRampToValueAtTime(0.001,context.currentTime+0.55);
+      tone.connect(volume).connect(context.destination);
+      tone.start();
+      tone.stop(context.currentTime+0.6);
+    } catch { if (stage.isConnected) status(t("blocked")); }
+  });
+}
+function setupMedia(check,stage,status) {
+  stage.innerHTML = button("enable","enable");
+  let stream, context, animation;
+  cleanup = () => {
+    stream?.getTracks().forEach(track => track.stop());
+    if (context) context.close().catch(() => {});
+    cancelAnimationFrame(animation);
+  };
+  on("enable", async () => {
+    const enable = document.getElementById("enable");
+    enable.disabled = true;
+    status(t("waiting"));
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(check === "camera" ? {video:true} : {audio:true});
+      if (!stage.isConnected) { stream.getTracks().forEach(track => track.stop()); return; }
+      status("");
+      if (check === "camera") {
+        const video = document.createElement("video");
+        video.className = "preview";
+        video.autoplay = video.playsInline = video.muted = true;
+        video.srcObject = stream;
+        stage.replaceChildren(video);
+      } else {
+        context = new AudioContext();
+        await context.resume();
+        if (!stage.isConnected) return;
+        const analyser = context.createAnalyser();
+        context.createMediaStreamSource(stream).connect(analyser);
+        const samples = new Uint8Array(analyser.fftSize);
+        const meter = document.createElement("meter");
+        meter.max = 1;
+        meter.setAttribute("aria-label",t("mic"));
+        stage.replaceChildren(meter);
+        let heard = false;
+        function update() {
+          analyser.getByteTimeDomainData(samples);
+          const peak = samples.reduce((max, sample) => Math.max(max, Math.abs(sample-128)),0);
+          meter.value = peak/128;
+          if (peak > 8 && !heard) { heard = true; status(t("detected")); }
+          animation = requestAnimationFrame(update);
+        }
+        update();
+      }
+    } catch {
+      stream?.getTracks().forEach(track => track.stop());
+      if (stage.isConnected) { enable.disabled = false; status(t("blocked")); }
+    }
+  });
+}
+const claimFields = {
+  ramGB: ["ram","ram",true],
+  storageGB: ["storage","windowsStorage",true],
+  processor: ["cpu","cpu",false],
+  graphics: ["graphics","graphics",false],
+  model: ["model","model",false]
+};
+
+function compareClaim(key, claimed, observed) {
+  if (!observed) return "review";
+  if (key === "ramGB") return Number(claimed) === parseFloat(observed) ? "match" : "mismatch";
+  if (key === "storageGB") {
+    // Advertised drive capacity is nominal and can differ slightly from Windows.
+    const difference = Math.abs(Number(claimed)-parseFloat(observed));
+    if (difference < 0.5) return "match";
+    return difference / Number(claimed) <= 0.05 ? "closeSize" : "mismatch";
+  }
+  const normalize = value => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+  const expected = normalize(claimed);
+  const actual = normalize(observed);
+  if (expected && ` ${actual} `.includes(` ${expected} `)) return "match";
+  if (key === "processor") {
+    const intelModel = value => value.match(/\bi[3579] \d{4,5}[a-z]*\b/)?.[0];
+    const fullExpected = intelModel(expected);
+    const fullActual = intelModel(actual);
+    if (fullExpected && fullActual && fullExpected !== fullActual) return "mismatch";
+    const intelTier = value => value.match(/\bi[3579]\b/)?.[0];
+    const expectedTier = intelTier(expected);
+    const actualTier = intelTier(actual);
+    if (expectedTier && actualTier && expectedTier !== actualTier) return "mismatch";
+  }
+  // A shorthand model name or an incomplete driver name needs a human check.
+  return "review";
+}
+
+function setupSellerComparison() {
+  const form = document.getElementById("seller-form");
+  const comparison = document.getElementById("comparison");
+  const notice = document.getElementById("seller-status");
+  function showComparison() {
+    const rows = Object.entries(claimFields).flatMap(([key,[label,field,numeric]]) => {
+      const claimed = seller.claims[key];
+      if (!claimed || (numeric && (!Number.isFinite(Number(claimed)) || Number(claimed) <= 0))) return [];
+      const observed = report?.[field] ?? (key === "storageGB" ? report?.storage : null);
+      const result = compareClaim(key,claimed,observed);
+      const tone = result === "match" ? "good" : result === "mismatch" ? "bad" : "";
+      return `<div class="result" data-result="${tone}"><div>${t(label)}<small>${t("sellerValue")} — ${escapeHtml(claimed)}${numeric ? " GB" : ""}</small><small>${t("scannedValue")} — ${escapeHtml(observed ?? t("unseen"))}</small></div><strong>${t(result)}</strong></div>`;
+    });
+    comparison.innerHTML = rows.length ? rows.join("") : `<p>${t("noClaims")}</p>`;
+  }
+  if (seller.compared) showComparison();
+  form.addEventListener("input", event => {
+    if (!Object.hasOwn(claimFields,event.target.name)) return;
+    seller.claims[event.target.name] = event.target.value.trim();
+    seller.compared = false;
+    comparison.replaceChildren();
+  });
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    seller.compared = true;
+    showComparison();
+  });
+  if (!listingAi) return;
+  const listing = document.getElementById("seller-listing");
+  listing.addEventListener("input", () => { seller.listing = listing.value; });
+  on("read-listing", async () => {
+    const text = listing.value.trim();
+    if (!text) { notice.textContent = t("enterListing"); listing.focus(); return; }
+    const reader = document.getElementById("read-listing");
+    reader.disabled = true;
+    notice.textContent = t("aiReading");
+    try {
+      const response = await fetch("/api/seller-claims", {
+        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({listing:text})
+      });
+      if (!response.ok) throw new Error("Listing reader unavailable");
+      const extracted = await response.json();
+      if (!form.isConnected || listing.value.trim() !== text) return;
+      let found = false;
+      for (const [key,[,,numeric]] of Object.entries(claimFields)) {
+        const field = form.elements.namedItem(key);
+        const value = extracted[key];
+        const valid = numeric ? Number.isFinite(value) && value > 0 : typeof value === "string" && value.trim();
+        if (!valid) continue;
+        found = true;
+        if (!field.value) {
+          field.value = numeric ? value : value.trim().slice(0,160);
+          seller.claims[key] = field.value;
+        }
+      }
+      if (found) { seller.compared = false; comparison.replaceChildren(); }
+      notice.textContent = t(found ? "aiFound" : "aiEmpty");
+    } catch {
+      if (form.isConnected) notice.textContent = t("aiOff");
+    } finally {
+      reader.disabled = false;
+    }
+  });
+}
+
+function inspectionResults(keys) {
+  return keys.map(key => {
+    const result = results[key] || "unseen";
+    return `<div class="result"><span>${t(key)}</span><strong data-result="${result}">${t(result)}</strong></div>`;
+  }).join("");
+}
+
+function renderSummary() {
+  if (browserQuick) {
+    app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("browserSummary")}</h1>
+      ${inspectionResults(browserChecks)}
+      <p class="lead">${t("browserLimits")}</p>
+      <div class="actions"><a class="download-link" href="${landing()}#download">${t("downloadChecker")}</a>${button("restart","restart")}</div></section>`;
+    on("restart", () => start("quick"));
+    return;
+  }
+  app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("summary")}</h1><p class="lead">${t("summaryHint")}</p>
+    <section class="stage seller-panel" aria-labelledby="seller-title">
+    <h2 id="seller-title">${t("sellerTitle")}</h2><p>${t("sellerHint")}</p>
+    ${listingAi ? `<div class="listing-input"><label for="seller-listing">${t("listing")}</label><textarea id="seller-listing" rows="3" maxlength="3000">${escapeHtml(seller.listing)}</textarea><p class="status">${t("aiPrivacy")}</p><div class="actions">${button("read-listing","aiRead")}</div><p class="status" id="seller-status" role="status"></p></div>` : ""}
+    <form id="seller-form"><div class="claim-fields">${Object.entries(claimFields).map(([key,[label,,numeric]]) =>
+      `<div><label for="claim-${key}">${t(label)}${numeric ? " (GB)" : ""}</label><input id="claim-${key}" name="${key}" ${numeric ? 'type="number" min="0.01" step="any" inputmode="decimal"' : 'maxlength="160"'} value="${escapeHtml(seller.claims[key] ?? "")}"></div>`
+    ).join("")}</div><div class="actions"><button class="primary" type="submit">${t("compare")}</button></div></form>
+    <div class="comparison" id="comparison" aria-live="polite"></div></section>
+    <h2>${t("specs")}</h2>${report ? reportHtml() : `<p>${t("unseen")}</p>`}
+    ${inspectionResults(checks().slice(1))}
+    <div class="actions">${mode === "quick" ? button("extra","extra",true) : ""}${button("print","print")}${button("restart","restart")}</div></section>`;
+  if (mode === "quick") on("extra", () => { mode = "full"; step = quickChecks.length; render(); });
+  setupSellerComparison();
+  on("print", () => window.print());
+  on("restart", () => { mode = null; results = {}; report = null; render(); });
+}
+for (const code of ["ky","ru"]) on(code, () => { if (lang !== code) { lang = code; render(false); } });
+render(false);
+</script>
+</body>
+</html>

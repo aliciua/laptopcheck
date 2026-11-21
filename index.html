@@ -12,7 +12,7 @@ header{border-bottom:1px solid var(--line);background:var(--white)}.nav{min-heig
 .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:clamp(1.7rem,5vw,4.6rem);padding:clamp(2.8rem,8vw,6rem) 0}.hero h1{margin:0;font-size:clamp(2.5rem,5.7vw,4.6rem);line-height:1.04;letter-spacing:-.063em;max-width:14ch}.hero p{color:var(--muted);font-size:1.13rem;max-width:42ch;margin:1rem 0 1.5rem}.download{display:inline-flex;align-items:center;gap:.6rem;min-height:52px;padding:.72rem 1.15rem;background:var(--green);color:white;border-radius:.65rem;text-decoration:none;font-weight:750}.download:hover{background:#103f2f}.hero small{display:block;margin-top:.72rem;color:var(--muted)}
 .example{margin:0;background:#223a2e;border:1px solid #223a2e;border-radius:1.2rem;box-shadow:0 14px 40px #21372822;overflow:hidden}.example figcaption{padding:.65rem 1.05rem;color:#e2f0dc;font-size:.9rem}.sample{background:var(--white);margin:0 .62rem .62rem;border-radius:.75rem;padding:clamp(1rem,3vw,1.6rem)}.sample h2{font-size:1.24rem;margin:0 0 .8rem}.sample dl{margin:0}.sample dl div{display:flex;align-items:center;justify-content:space-between;gap:.75rem;border-top:1px solid var(--line);padding:.6rem 0}.sample dd{font-weight:750;margin:0;white-space:nowrap}.sample-result{display:inline-block;margin-top:.65rem;border-radius:.45rem;background:#fae9e0;color:#803421;padding:.4rem .6rem;font-weight:720}
 .steps{border-top:1px solid var(--line);padding:2rem 0}.steps h2{font-size:1.8rem;letter-spacing:-.035em;margin:0 0 1rem}.steps ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;counter-reset:step}.steps li{padding:1rem;border:1px solid var(--line);border-radius:.75rem;background:var(--white);counter-increment:step}.steps li::before{content:counter(step);display:block;color:var(--green);font-weight:800;margin-bottom:.35rem}.steps h3{font-size:1rem;margin:0 0 .28rem}.steps p{color:var(--muted);margin:0}.note{margin:0 0 2rem;padding:1rem 1.1rem;border-left:4px solid #a16a34;background:#f6eee2;color:#503e2d}.note strong{display:block}.note p{margin:.25rem 0 0}footer{border-top:1px solid var(--line);padding:1rem 0 1.5rem;color:var(--muted)}footer .wrap{display:flex;gap:1rem;justify-content:space-between;flex-wrap:wrap}
-@media(max-width:48rem){.hero{grid-template-columns:1fr}.hero h1{max-width:16ch}.example{max-width:30rem}}@media(max-width:34rem){.steps ol{grid-template-columns:1fr}.hero{padding-top:2.2rem}.hero h1{font-size:clamp(2.2rem,10vw,3.2rem)}}
+.hero .browser-option{margin:1.1rem 0 0}.browser-option a{display:inline-flex;align-items:center;min-height:46px;padding:.55rem .85rem;border:1px solid var(--green);border-radius:.55rem;text-decoration:none;font-weight:750}.browser-option a:hover{background:var(--soft)}.browser-option small{margin-top:.5rem}@media(max-width:48rem){.hero{grid-template-columns:1fr}.hero h1{max-width:16ch}.example{max-width:30rem}}@media(max-width:34rem){.steps ol{grid-template-columns:1fr}.hero{padding-top:2.2rem}.hero h1{font-size:clamp(2.2rem,10vw,3.2rem)}}
 </style>
 </head>
 <body>
@@ -22,8 +22,10 @@ header{border-bottom:1px solid var(--line);background:var(--white)}.nav{min-heig
     <div>
       <h1 id="title" data-text="title">Ноутбукту сатып алардан мурун текшериңиз</h1>
       <p data-text="intro">Сатуучу айткан мүнөздөмөлөрдү ноутбуктун көрсөткүчтөрү менен салыштырыңыз. Экранды, баскычтопту жана үндү да текшериңиз.</p>
-      <a class="download" href="https://github.com/aliciua/laptopcheck/releases/download/v0.2.0/LaptopCheck.exe"><span aria-hidden="true">↓</span><span data-text="download">Windows үчүн жүктөп алуу</span></a>
+      <a id="download" class="download" href="https://github.com/aliciua/laptopcheck/releases/download/v0.2.0/LaptopCheck.exe"><span aria-hidden="true">↓</span><span data-text="download">Windows үчүн жүктөп алуу</span></a>
       <small data-text="requirements">64 биттик Windows (Intel же AMD) · 9,2 МБ · Python орнотуунун кереги жок</small>
+      <div class="browser-option"><a id="browser-quick" href="./browser-check.html?quick=1&amp;lang=ky" data-text="browserQuick">Браузерде тез текшерүү</a>
+      <small data-text="browserHint">Жүктөп алуунун кереги жок. Экранды, баскычтопту жана үндү текшериңиз.</small></div>
     </div>
     <figure class="example">
       <figcaption data-text="example">Текшерүүнүн үлгүсү</figcaption>
@@ -53,6 +55,7 @@ const russian = {
   intro:"Сравните характеристики ноутбука с объявлением продавца. Проверьте экран, клавиатуру и звук.",
   download:"Скачать для Windows",
   requirements:"64-битная Windows (Intel или AMD) · 9,2 МБ · Python устанавливать не нужно",
+  browserQuick:"Быстрая проверка в браузере", browserHint:"Без скачивания. Проверьте экран, клавиатуру и звук.",
   example:"Пример проверки", memory:"Оперативная память (RAM)", seller:"По объявлению", device:"На ноутбуке", mismatch:"Не совпадает",
   steps:"Как это работает", first:"Откройте страницу на ноутбуке", firstText:"Откройте эту ссылку на ноутбуке, который хотите купить.",
   second:"Спросите разрешения продавца", secondText:"С разрешения продавца скачайте и откройте LaptopCheck.exe.",
@@ -61,15 +64,17 @@ const russian = {
   privacy:"Результаты проверки остаются на ноутбуке.", release:"Информация о выпуске"
 };
 const languageButtons = document.querySelectorAll("[data-lang]");
-for (const button of languageButtons) {
-  button.addEventListener("click", () => {
-    const lang = button.dataset.lang;
-    const words = lang === "ru" ? russian : kyrgyz;
-    document.documentElement.lang = lang;
-    for (const label of labels) label.textContent = words[label.dataset.text];
-    for (const option of languageButtons) option.setAttribute("aria-pressed", String(option === button));
-  });
+function setLanguage(lang) {
+  const words = lang === "ru" ? russian : kyrgyz;
+  document.documentElement.lang = lang;
+  for (const label of labels) label.textContent = words[label.dataset.text];
+  for (const option of languageButtons) option.setAttribute("aria-pressed", String(option.dataset.lang === lang));
+  document.getElementById("browser-quick").href = `./browser-check.html?quick=1&lang=${lang}`;
 }
+for (const button of languageButtons) {
+  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+}
+if (new URLSearchParams(location.search).get("lang") === "ru") setLanguage("ru");
 </script>
 </body>
 </html>
