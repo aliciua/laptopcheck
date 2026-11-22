@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ky">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="LaptopCheck менен колдонулган Windows ноутбугун сатып алардан мурун текшериңиз.">
+<meta name="description" content="Проверьте ноутбук перед покупкой с LaptopCheck.">
 <title>LaptopCheck</title>
 <style>
 :root{--paper:#f6f7f2;--white:#fff;--ink:#172921;--muted:#41594d;--green:#145b3d;--line:#cfdacf;--soft:#e6f1de}
@@ -16,52 +16,52 @@ header{border-bottom:1px solid var(--line);background:var(--white)}.nav{min-heig
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><div class="brand">Laptop<span>Check</span></div><div class="languages" role="group" aria-label="Тил / Язык"><button type="button" lang="ky" data-lang="ky" aria-pressed="true">Кыргызча</button><button type="button" lang="ru" data-lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<header><div class="wrap nav"><div class="brand">Laptop<span>Check</span></div><div class="languages" role="group" aria-label="Язык / Тил"><button type="button" lang="ru" data-lang="ru" aria-pressed="true">Русский</button><button type="button" lang="ky" data-lang="ky" aria-pressed="false">Кыргызча</button></div></div></header>
 <main class="wrap">
   <section class="hero" aria-labelledby="title">
     <div>
-      <h1 id="title" data-text="title">Ноутбукту сатып алардан мурун текшериңиз</h1>
-      <p data-text="intro">Сатуучу айткан мүнөздөмөлөрдү ноутбуктун көрсөткүчтөрү менен салыштырыңыз. Экранды, баскычтопту жана үндү да текшериңиз.</p>
-      <a id="download" class="download" href="https://github.com/aliciua/laptopcheck/releases/download/v0.2.0/LaptopCheck.exe"><span aria-hidden="true">↓</span><span data-text="download">Windows үчүн жүктөп алуу</span></a>
-      <small data-text="requirements">64 биттик Windows (Intel же AMD) · 9,2 МБ · Python орнотуунун кереги жок</small>
-      <div class="browser-option"><a id="browser-quick" href="./browser-check.html?quick=1&amp;lang=ky" data-text="browserQuick">Браузерде тез текшерүү</a>
-      <small data-text="browserHint">Жүктөп алуунун кереги жок. Экранды, баскычтопту жана үндү текшериңиз.</small></div>
+      <h1 id="title" data-text="title">Проверьте ноутбук перед покупкой</h1>
+      <p data-text="intro">Сравните характеристики ноутбука с объявлением продавца. Проверьте экран, клавиатуру и звук.</p>
+      <a id="download" class="download" href="https://github.com/aliciua/laptopcheck/releases/download/v0.2.0/LaptopCheck.exe"><span aria-hidden="true">↓</span><span data-text="download">Скачать для Windows</span></a>
+      <small data-text="requirements">64-битная Windows (Intel или AMD) · 9,2 МБ · Python устанавливать не нужно</small>
+      <div class="browser-option"><a id="browser-quick" href="./browser-check.html?quick=1&amp;lang=ru" data-text="browserQuick">Быстрая проверка в браузере</a>
+      <small data-text="browserHint">Без скачивания. Проверьте экран, клавиатуру и звук.</small></div>
     </div>
     <figure class="example">
-      <figcaption data-text="example">Текшерүүнүн үлгүсү</figcaption>
+      <figcaption data-text="example">Пример проверки</figcaption>
       <div class="sample">
-        <h2 data-text="memory">Эс тутум (RAM)</h2>
-        <dl><div><dt data-text="seller">Сатуучу көрсөткөнү</dt><dd>16 GB</dd></div><div><dt data-text="device">Ноутбуктан окулганы</dt><dd>8 GB</dd></div></dl>
-        <span class="sample-result" data-text="mismatch">Дал келбейт</span>
+        <h2 data-text="memory">Оперативная память (RAM)</h2>
+        <dl><div><dt data-text="seller">По объявлению</dt><dd>16 GB</dd></div><div><dt data-text="device">На ноутбуке</dt><dd>8 GB</dd></div></dl>
+        <span class="sample-result" data-text="mismatch">Не совпадает</span>
       </div>
     </figure>
   </section>
   <section class="steps" aria-labelledby="steps-title">
-    <h2 id="steps-title" data-text="steps">Кантип колдонуу керек</h2>
+    <h2 id="steps-title" data-text="steps">Как это работает</h2>
     <ol>
-      <li><h3 data-text="first">Бул баракты ноутбуктан ачыңыз</h3><p data-text="firstText">Сатып алгыңыз келген ноутбуктан ушул шилтемени ачыңыз.</p></li>
-      <li><h3 data-text="second">Сатуучудан уруксат сураңыз</h3><p data-text="secondText">Уруксат бергенде LaptopCheck.exe файлын жүктөп алып ачыңыз.</p></li>
-      <li><h3 data-text="third">Тез текшерүүнү баштаңыз</h3><p data-text="thirdText">Браузердеги кадамдарды аткарыңыз. Аягында чыккан маалыматты жарыя менен салыштырыңыз.</p></li>
+      <li><h3 data-text="first">Откройте страницу на ноутбуке</h3><p data-text="firstText">Откройте эту ссылку на ноутбуке, который хотите купить.</p></li>
+      <li><h3 data-text="second">Спросите разрешения продавца</h3><p data-text="secondText">С разрешения продавца скачайте и откройте LaptopCheck.exe.</p></li>
+      <li><h3 data-text="third">Начните быструю проверку</h3><p data-text="thirdText">Следуйте шагам в браузере. В конце сравните полученные данные с объявлением.</p></li>
     </ol>
   </section>
-  <aside class="note"><strong data-text="pilot">Алгачкы сыноо версиясы</strong><p data-text="warning">Файлга санариптик кол коюла элек. Windows файлды ачууда эскертүү көрсөтүшү же аны бөгөттөшү мүмкүн.</p></aside>
+  <aside class="note"><strong data-text="pilot">Первая тестовая версия</strong><p data-text="warning">У файла пока нет цифровой подписи. Windows может предупредить или заблокировать запуск.</p></aside>
 </main>
-<footer><div class="wrap"><span data-text="privacy">Текшерүүнүн жыйынтыгы ноутбуктун өзүндө калат.</span><a href="https://github.com/aliciua/laptopcheck/releases/tag/v0.2.0" data-text="release">Чыгарылыш тууралуу маалымат</a></div></footer>
+<footer><div class="wrap"><span data-text="privacy">Результаты проверки остаются на ноутбуке.</span><a href="https://github.com/aliciua/laptopcheck/releases/tag/v0.2.0" data-text="release">Информация о выпуске</a></div></footer>
 <script>
 const labels = document.querySelectorAll("[data-text]");
-const kyrgyz = Object.fromEntries(Array.from(labels, element => [element.dataset.text, element.textContent]));
-const russian = {
-  title:"Проверьте ноутбук перед покупкой",
-  intro:"Сравните характеристики ноутбука с объявлением продавца. Проверьте экран, клавиатуру и звук.",
-  download:"Скачать для Windows",
-  requirements:"64-битная Windows (Intel или AMD) · 9,2 МБ · Python устанавливать не нужно",
-  browserQuick:"Быстрая проверка в браузере", browserHint:"Без скачивания. Проверьте экран, клавиатуру и звук.",
-  example:"Пример проверки", memory:"Оперативная память (RAM)", seller:"По объявлению", device:"На ноутбуке", mismatch:"Не совпадает",
-  steps:"Как это работает", first:"Откройте страницу на ноутбуке", firstText:"Откройте эту ссылку на ноутбуке, который хотите купить.",
-  second:"Спросите разрешения продавца", secondText:"С разрешения продавца скачайте и откройте LaptopCheck.exe.",
-  third:"Начните быструю проверку", thirdText:"Следуйте шагам в браузере. В конце сравните полученные данные с объявлением.",
-  pilot:"Первая тестовая версия", warning:"У файла пока нет цифровой подписи. Windows может предупредить или заблокировать запуск.",
-  privacy:"Результаты проверки остаются на ноутбуке.", release:"Информация о выпуске"
+const russian = Object.fromEntries(Array.from(labels, element => [element.dataset.text, element.textContent]));
+const kyrgyz = {
+  title:"Ноутбукту сатып алардан мурун текшериңиз",
+  intro:"Сатуучу айткан мүнөздөмөлөрдү ноутбуктун көрсөткүчтөрү менен салыштырыңыз. Экранды, баскычтопту жана үндү да текшериңиз.",
+  download:"Windows үчүн жүктөп алуу",
+  requirements:"64 биттик Windows (Intel же AMD) · 9,2 МБ · Python орнотуунун кереги жок",
+  browserQuick:"Браузерде тез текшерүү", browserHint:"Жүктөп алуунун кереги жок. Экранды, баскычтопту жана үндү текшериңиз.",
+  example:"Текшерүүнүн үлгүсү", memory:"Эс тутум (RAM)", seller:"Сатуучу көрсөткөнү", device:"Ноутбуктан окулганы", mismatch:"Дал келбейт",
+  steps:"Кантип колдонуу керек", first:"Бул баракты ноутбуктан ачыңыз", firstText:"Сатып алгыңыз келген ноутбуктан ушул шилтемени ачыңыз.",
+  second:"Сатуучудан уруксат сураңыз", secondText:"Уруксат бергенде LaptopCheck.exe файлын жүктөп алып ачыңыз.",
+  third:"Тез текшерүүнү баштаңыз", thirdText:"Браузердеги кадамдарды аткарыңыз. Аягында чыккан маалыматты жарыя менен салыштырыңыз.",
+  pilot:"Алгачкы сыноо версиясы", warning:"Файлга санариптик кол коюла элек. Windows файлды ачууда эскертүү көрсөтүшү же аны бөгөттөшү мүмкүн.",
+  privacy:"Текшерүүнүн жыйынтыгы ноутбуктун өзүндө калат.", release:"Чыгарылыш тууралуу маалымат"
 };
 const languageButtons = document.querySelectorAll("[data-lang]");
 function setLanguage(lang) {
@@ -74,7 +74,7 @@ function setLanguage(lang) {
 for (const button of languageButtons) {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 }
-if (new URLSearchParams(location.search).get("lang") === "ru") setLanguage("ru");
+if (new URLSearchParams(location.search).get("lang") === "ky") setLanguage("ky");
 </script>
 </body>
 </html>

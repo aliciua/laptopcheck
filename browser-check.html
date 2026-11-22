@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ky">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@ textarea{font:inherit;resize:vertical}.seller-panel{margin:1.25rem 0 1.6rem}.sel
 </style>
 </head>
 <body>
-<header><div class="bar"><div class="brand">Laptop<span>Check</span></div><div class="languages" role="group" aria-label="Language"><button id="ky" lang="ky" aria-pressed="true">Кыргызча</button><button id="ru" lang="ru" aria-pressed="false">Русский</button></div></div></header>
+<header><div class="bar"><div class="brand">Laptop<span>Check</span></div><div class="languages" role="group" aria-label="Язык / Тил"><button id="ru" lang="ru" aria-pressed="true">Русский</button><button id="ky" lang="ky" aria-pressed="false">Кыргызча</button></div></div></header>
 <main class="wrap" id="app"></main>
 <script>
 const copy = {
@@ -96,7 +96,7 @@ const listingAi = localChecker && document.documentElement.hasAttribute("data-li
 const params = new URLSearchParams(location.search);
 const browserQuick = !localChecker && params.get("quick") === "1";
 const browserChecks = quickChecks.slice(1);
-let lang = browserQuick && params.get("lang") === "ru" ? "ru" : "ky";
+let lang = params.get("lang") === "ky" ? "ky" : "ru";
 let mode = browserQuick ? "quick" : null;
 let step = 0;
 let results = {};
