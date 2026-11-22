@@ -9,7 +9,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #945600;outline-offset:4px}button{border:1px solid var(--line);border-radius:12px;padding:.65rem 1rem;background:white;color:var(--ink);min-height:46px}button:hover{border-color:var(--green);background:#edf7ee}button[aria-pressed=true]{background:#deefe2;border-color:var(--green);font-weight:700}.primary{background:var(--green);color:white;border-color:var(--green);font-weight:700}.primary:hover{background:#104e37;color:white}
 header{border-bottom:1px solid var(--line);background:#fff}.bar{max-width:1100px;margin:auto;padding:1rem clamp(1rem,5vw,3rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:-.035em}.brand span{color:var(--green)}.languages,.actions{display:flex;flex-wrap:wrap;gap:.6rem}.languages button{padding:.35rem .7rem}.wrap{max-width:1100px;margin:auto;padding:clamp(1rem,5vw,3rem)}.hero{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:2rem;padding:clamp(1.3rem,5vw,3.5rem);background:#e7f1e5;border:1px solid var(--line);border-radius:24px}.hero h1{font-size:clamp(2.25rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.055em;margin:0 0 1rem}.hero p{max-width:38ch;color:var(--muted);margin:0}.illustration{padding:1.2rem 0;max-width:310px;width:100%;margin:auto}.screen{border:9px solid #173c2d;border-radius:14px 14px 4px 4px;min-height:155px;background:#fcfffa;display:grid;place-items:center}.screen-mark{background:#d8efdc;color:#19593e;border-radius:50%;width:75px;height:75px;display:grid;place-items:center;font-size:2.7rem}.base{height:12px;background:#173c2d;width:112%;margin-left:-6%;border-radius:2px 2px 60px 60px}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.card,.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(1.15rem,3.5vw,2rem)}.card h2,h1,h2{line-height:1.15;margin:0 0 .65rem}.card p,.lead{color:var(--muted)}.card p{margin:0 0 1.1rem}.panel{max-width:730px;margin:auto}.panel h1{font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.04em}.panel .actions{margin-top:1.3rem}.progress{font-weight:650;color:var(--green);margin:0 0 .7rem}progress{width:100%;height:9px;accent-color:var(--green);display:block;margin:0 0 1.5rem}.stage{margin-top:1rem;padding:1rem;border-radius:12px;background:#edf4ed}.stage:empty{display:none}.key-grid{display:flex;flex-wrap:wrap;gap:.5rem}.key{min-width:3rem;padding:.45rem;text-align:center;border:1px solid var(--line);border-radius:6px;background:white}.key.hit{background:#cae9cf;font-weight:800}.swatch{height:160px;border-radius:8px;border:1px solid #84988b;display:block;width:100%;touch-action:manipulation}.swatch:fullscreen{height:100%;border:0}.preview{width:min(100%,390px);display:block;border-radius:8px}.result{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--line)}.result strong{text-align:right}.result strong[data-result=good]{color:#176447}.result strong[data-result=bad]{color:#9b321a}.report-grid{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:1rem 0}.report-grid dd{margin:0;overflow-wrap:anywhere}.report-grid dt{font-weight:650}.status{color:var(--muted);margin:.7rem 0 0}.status:empty{display:none}.nav{border-top:1px solid var(--line);padding-top:1rem}.pad{display:grid;place-items:center;text-align:center;min-height:100px;background:#fff;border:2px dashed var(--line);border-radius:10px;padding:.5rem}.spec{margin:1rem 0}.spec input{max-width:100%}@media(max-width:620px){.hero,.cards{grid-template-columns:1fr}.illustration{display:none}.hero{padding:1.5rem}.actions button{flex:1 1 auto}}@media print{header,button,input,progress{display:none!important}.panel{border:0}.wrap{padding:0}}
-textarea{font:inherit;resize:vertical}.seller-panel{margin:1.25rem 0 1.6rem}.seller-panel label{display:block;font-weight:650;margin:.65rem 0 .25rem}.seller-panel input,.seller-panel textarea{width:100%;padding:.55rem .7rem;border:1px solid #84988b;border-radius:8px;background:white;color:var(--ink)}.seller-panel textarea:focus-visible{outline:3px solid #945600;outline-offset:4px}.claim-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}.comparison{margin-top:1rem}.comparison small{display:block;color:var(--muted);overflow-wrap:anywhere}.comparison .result[data-result=bad] strong{color:#9b321a}.comparison .result[data-result=good] strong{color:#176447}@media(max-width:500px){.claim-fields{grid-template-columns:1fr}}@media print{.seller-panel form,.listing-input{display:none!important}}
+.seller-panel{margin:1.25rem 0 1.6rem}.seller-panel label{display:block;font-weight:650;margin:.65rem 0 .25rem}.seller-panel input{width:100%;padding:.55rem .7rem;border:1px solid #84988b;border-radius:8px;background:white;color:var(--ink)}.claim-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}.comparison{margin-top:1rem}.comparison small{display:block;color:var(--muted);overflow-wrap:anywhere}.comparison .result[data-result=bad] strong{color:#9b321a}.comparison .result[data-result=good] strong{color:#176447}@media(max-width:500px){.claim-fields{grid-template-columns:1fr}}@media print{.seller-panel form{display:none!important}}
 .history-details{margin:.8rem 0}.history-details summary{cursor:pointer;font-weight:650}.download-link{display:inline-flex;align-items:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--green);border-radius:12px;color:var(--green);font-weight:700}.download-link:focus-visible{outline:3px solid #945600;outline-offset:4px}@media print{.download-link{display:none}}
 </style>
 </head>
@@ -60,8 +60,6 @@ Object.assign(copy.ky, {
   lidWake:"Уйкудан ойгонуу", lidWakeHint:"Сатуучунун уруксаты менен ноутбукту уйку режимине өткөрүп, кайра ойготуңуз. Экран жана баскычтоп кайра иштедиби?",
   caseCheck:"Корпустун абалы", caseCheckHint:"Корпусту жана портторду караңыз. Жарака, ийилүү же ачылып калган жер барбы? Корпусту ачпаңыз.",
   sellerTitle:"Сатуучу эмне деп айткан?", sellerHint:"Жарыядагы же сатуучу айткан мүнөздөмөлөрдү жазыңыз. Билбеген жерлерди бош калтырыңыз.",
-  listing:"Жарыянын тексти", aiRead:"Жарыяны AI менен окуу", aiPrivacy:"Бул баскычты бассаңыз, жарыянын тексти OpenAI'га жөнөтүлөт. Ноутбуктун текшерүү жыйынтыгы жөнөтүлбөйт. Телефон номерин жана жеке маалыматты өчүрүңүз.",
-  aiReading:"Жарыяны окуп жатабыз…", aiFound:"Табылган маанилерди текшерип, анан салыштырыңыз.", aiEmpty:"Так мүнөздөмө табылган жок. Белгилүү маалыматты жазыңыз.", aiOff:"AI азыр жеткиликсиз. Төмөнкү талааларды өзүңүз толтурсаңыз болот.", enterListing:"Адегенде жарыянын текстин чаптаңыз.",
   compare:"Салыштыруу", match:"Дал келет", closeSize:"Көлөмү жакын", mismatch:"Дал келбейт", review:"Тактоо керек", sellerValue:"Сатуучу", scannedValue:"Ноутбуктан окулду", noClaims:"Салыштыруу үчүн жок дегенде бир мүнөздөмө жазыңыз.",
   diskHours:"Windows дискинин иштеген сааттары", hours:"саат", hoursUnavailable:"Дисктин иштеген сааттарын окуй алган жокпуз", installDate:"Windows орнотулган күн", oldestBoot:"Журналдагы эң эски иштетүү",
   hoursHint:"Бул көрсөткүч Windows орнотулган дискке таандык. Диск алмаштырылган болсо, мурунку дисктин сааттары эсепке кирбейт. Ноутбуктун жалпы иштеген убактысы белгисиз.",
@@ -81,8 +79,6 @@ Object.assign(copy.ru, {
   lidWake:"Выход из сна", lidWakeHint:"С разрешения продавца переведите ноутбук в режим сна, затем разбудите его. Экран и клавиатура снова работают?",
   caseCheck:"Состояние корпуса", caseCheckHint:"Посмотрите на корпус и разъёмы. Есть ли трещины, вмятины или разошедшиеся края? Разбирать ноутбук не нужно.",
   sellerTitle:"Что обещал продавец?", sellerHint:"Укажите характеристики из объявления или со слов продавца. Оставьте неизвестные поля пустыми.",
-  listing:"Текст объявления", aiRead:"Прочитать объявление с ИИ", aiPrivacy:"Эта кнопка отправляет текст объявления в OpenAI. Данные проверки ноутбука остаются здесь. Удалите номера телефонов и личные данные.",
-  aiReading:"Читаем объявление…", aiFound:"Проверьте найденные значения и нажмите «Сравнить».", aiEmpty:"Не нашли точных характеристик. Введите то, что знаете.", aiOff:"ИИ сейчас недоступен. Вы можете заполнить поля вручную.", enterListing:"Сначала вставьте текст объявления.",
   compare:"Сравнить", match:"Совпадает", closeSize:"Близкий объём", mismatch:"Не совпадает", review:"Нужно уточнить", sellerValue:"Продавец", scannedValue:"Что показал ноутбук", noClaims:"Введите хотя бы одну характеристику для сравнения.",
   diskHours:"Часы работы диска с Windows", hours:"ч", hoursUnavailable:"Не удалось прочитать счётчик часов", installDate:"Дата установки Windows", oldestBoot:"Самый ранний запуск в журнале",
   hoursHint:"Это счётчик диска, на котором установлена Windows. Если диск заменили, часы старого диска не учитываются. Общее время работы ноутбука неизвестно.",
@@ -92,7 +88,6 @@ const fullChecks = [...quickChecks,"pad","camera","mic","charge","battery","port
 const app = document.querySelector("#app");
 const localChecker = document.documentElement.hasAttribute("data-local-checker") &&
   location.protocol === "http:" && ["localhost", "127.0.0.1"].includes(location.hostname);
-const listingAi = localChecker && document.documentElement.hasAttribute("data-listing-ai");
 const params = new URLSearchParams(location.search);
 const browserQuick = !localChecker && params.get("quick") === "1";
 const browserChecks = quickChecks.slice(1);
@@ -101,7 +96,7 @@ let mode = browserQuick ? "quick" : null;
 let step = 0;
 let results = {};
 let report = null;
-let seller = {listing:"", claims:{}, compared:false};
+let seller = {claims:{}, compared:false};
 let cleanup = () => {};
 const t = key => copy[lang][key];
 const checks = () => browserQuick ? browserChecks : mode === "full" ? fullChecks : quickChecks;
@@ -119,7 +114,7 @@ function start(selected) {
   step = 0;
   results = {};
   report = null;
-  seller = {listing:"", claims:{}, compared:false};
+  seller = {claims:{}, compared:false};
   render();
 }
 function render(focus = true) {
@@ -414,7 +409,6 @@ function compareClaim(key, claimed, observed) {
 function setupSellerComparison() {
   const form = document.getElementById("seller-form");
   const comparison = document.getElementById("comparison");
-  const notice = document.getElementById("seller-status");
   function showComparison() {
     const rows = Object.entries(claimFields).flatMap(([key,[label,field,numeric]]) => {
       const claimed = seller.claims[key];
@@ -438,42 +432,6 @@ function setupSellerComparison() {
     seller.compared = true;
     showComparison();
   });
-  if (!listingAi) return;
-  const listing = document.getElementById("seller-listing");
-  listing.addEventListener("input", () => { seller.listing = listing.value; });
-  on("read-listing", async () => {
-    const text = listing.value.trim();
-    if (!text) { notice.textContent = t("enterListing"); listing.focus(); return; }
-    const reader = document.getElementById("read-listing");
-    reader.disabled = true;
-    notice.textContent = t("aiReading");
-    try {
-      const response = await fetch("/api/seller-claims", {
-        method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({listing:text})
-      });
-      if (!response.ok) throw new Error("Listing reader unavailable");
-      const extracted = await response.json();
-      if (!form.isConnected || listing.value.trim() !== text) return;
-      let found = false;
-      for (const [key,[,,numeric]] of Object.entries(claimFields)) {
-        const field = form.elements.namedItem(key);
-        const value = extracted[key];
-        const valid = numeric ? Number.isFinite(value) && value > 0 : typeof value === "string" && value.trim();
-        if (!valid) continue;
-        found = true;
-        if (!field.value) {
-          field.value = numeric ? value : value.trim().slice(0,160);
-          seller.claims[key] = field.value;
-        }
-      }
-      if (found) { seller.compared = false; comparison.replaceChildren(); }
-      notice.textContent = t(found ? "aiFound" : "aiEmpty");
-    } catch {
-      if (form.isConnected) notice.textContent = t("aiOff");
-    } finally {
-      reader.disabled = false;
-    }
-  });
 }
 
 function inspectionResults(keys) {
@@ -495,7 +453,6 @@ function renderSummary() {
   app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("summary")}</h1><p class="lead">${t("summaryHint")}</p>
     <section class="stage seller-panel" aria-labelledby="seller-title">
     <h2 id="seller-title">${t("sellerTitle")}</h2><p>${t("sellerHint")}</p>
-    ${listingAi ? `<div class="listing-input"><label for="seller-listing">${t("listing")}</label><textarea id="seller-listing" rows="3" maxlength="3000">${escapeHtml(seller.listing)}</textarea><p class="status">${t("aiPrivacy")}</p><div class="actions">${button("read-listing","aiRead")}</div><p class="status" id="seller-status" role="status"></p></div>` : ""}
     <form id="seller-form"><div class="claim-fields">${Object.entries(claimFields).map(([key,[label,,numeric]]) =>
       `<div><label for="claim-${key}">${t(label)}${numeric ? " (GB)" : ""}</label><input id="claim-${key}" name="${key}" ${numeric ? 'type="number" min="0.01" step="any" inputmode="decimal"' : 'maxlength="160"'} value="${escapeHtml(seller.claims[key] ?? "")}"></div>`
     ).join("")}</div><div class="actions"><button class="primary" type="submit">${t("compare")}</button></div></form>
