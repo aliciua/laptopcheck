@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Проверьте экран, клавиатуру и звук ноутбука в браузере или узнайте его характеристики через приложение для Windows.">
+  <title>LaptopCheck</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff8f1; --rose: #d3a6a3; --olive: #70702e; --sand: #c7beb3;
+      --ink: #332523; --muted: #634a44; --dark-rose: #713d49; --line: #caada4;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.55 system-ui, sans-serif; background: var(--paper); color: var(--ink); }
+    ::selection { background: var(--rose); color: var(--ink); }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--dark-rose); outline-offset: 4px; }
+    .inner { width: min(1200px, 100% - 6rem); margin-inline: auto; }
+    .top { border-bottom: 1px solid #e5d4c8; }
+    .top .inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: .7rem; }
+    .brand { display: inline-flex; align-items: center; gap: .63rem; text-decoration: none; font-family: var(--serif); font-size: 1.3rem; font-weight: 700; letter-spacing: -.038em; }
+    .brand svg { width: 29px; height: 27px; color: var(--dark-rose); }
+    .language { display: flex; align-items: center; gap: .28rem; }
+    .language button { cursor: pointer; font: inherit; font-size: .91rem; min-height: 44px; padding: .4rem .7rem; background: none; color: var(--muted); border: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+    .language button[aria-pressed=true] { color: var(--dark-rose); border-bottom-color: var(--dark-rose); font-weight: 720; }
+
+    .hero { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); min-height: clamp(32rem, 43vw, 43rem); border-bottom: 1px solid var(--line); }
+    .hero-copy { align-self: center; padding: clamp(2.25rem, 5vw, 5.2rem) clamp(1.5rem, 3vw, 3.2rem) clamp(2.25rem, 5vw, 5.2rem) max(3rem, calc((100vw - 1200px) / 2)); }
+    h1, h2 { font-family: var(--serif); line-height: 1.07; margin: 0; letter-spacing: -.039em; }
+    h1 { font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 700; max-width: 13ch; text-wrap: balance; }
+    h1 span { color: var(--dark-rose); }
+    .intro { margin: 1.15rem 0 1.65rem; max-width: 35ch; color: var(--muted); font-size: clamp(1rem, 1.55vw, 1.17rem); }
+    .actions { display: flex; align-items: flex-start; flex-wrap: wrap; gap: .7rem; }
+    .action { display: inline-flex; align-items: center; justify-content: space-between; gap: .6rem; min-height: 50px; padding: .68rem .86rem; text-decoration: none; font-weight: 680; border: 1px solid var(--dark-rose); border-radius: .45rem; }
+    .action svg { width: 17px; height: 17px; flex: none; }
+    .action.primary { background: var(--dark-rose); color: #fffaf3; }
+    .action.primary:hover { background: #592e39; }
+    .action.secondary { color: var(--dark-rose); }
+    .action.secondary:hover { background: #f0dcd4; }
+    .system { margin: .8rem 0 0; color: var(--muted); font-size: .86rem; }
+    .art {
+      position: relative; isolation: isolate; align-self: stretch; display: grid; align-items: end;
+      margin: 0; overflow: hidden; background: #e8c5be;
+    }
+    .art svg { display: block; width: 100%; height: auto; max-height: 100%; justify-self: end; overflow: visible; }
+    .wave-arm { transform-box: view-box; transform-origin: 489px 355px; animation: greeting 2s ease-in-out 2; }
+    @keyframes greeting {
+      0%, 100% { transform: rotate(0deg); }
+      22%, 68% { transform: rotate(10deg); }
+      45% { transform: rotate(-8deg); }
+      85% { transform: rotate(-4deg); }
+    }
+
+    .guide { display: grid; grid-template-columns: minmax(0, .66fr) minmax(0, 1.34fr); gap: clamp(1rem, 5vw, 5rem); padding-block: clamp(2.4rem, 6.2vw, 5rem); }
+    .guide h2 { font-size: clamp(2rem, 4vw, 3.7rem); }
+    .guide-heading p { color: var(--muted); margin: .8rem 0 0; max-width: 27ch; }
+    .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; border-top: 1px solid var(--line); }
+    .steps li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .9rem; align-items: baseline; padding: 1.02rem 0; border-bottom: 1px solid var(--line); counter-increment: step; }
+    .steps li::before { content: counter(step, decimal-leading-zero); color: var(--olive); font-size: .88rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .steps h3 { margin: 0 0 .24rem; font-size: 1rem; }
+    .steps p { margin: 0; color: var(--muted); }
+    .footer { background: #eee0d7; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
+    .footer .inner { padding-block: 1rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.2rem; justify-content: space-between; }
+    .footer p { margin: 0; }
+    .footer a { color: var(--dark-rose); }
+    @media (max-width: 900px) {
+      .inner { width: min(100% - 2rem, 760px); }
+      .hero { min-height: 0; }
+      .hero-copy { padding-inline: 1rem; }
+      h1 { font-size: clamp(2.35rem, 6vw, 4rem); }
+      .art { align-items: end; }
+    }
+    @media (max-width: 590px) {
+      .hero, .guide { grid-template-columns: 1fr; }
+      .hero-copy { padding-block: 2rem 1.55rem; }
+      h1 { font-size: clamp(2.48rem, 10vw, 3.5rem); }
+      .art svg { max-width: none; }
+      .guide-heading p { max-width: 40ch; }
+      .top .inner { min-height: 62px; }
+      .brand { font-size: 1.1rem; gap: .36rem; }
+      .brand svg { width: 23px; }
+      .language button { padding-inline: .4rem; font-size: .8rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .wave-arm { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="inner">
+      <a href="./" class="brand" aria-label="LaptopCheck">
+        <svg viewBox="0 0 33 30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16.5 22c-8-4-8-12 0-20 8 8 8 16 0 20Zm0 0C6 23 2 14 2 9c7 0 11 6 14.5 13Zm0 0C27 23 31 14 31 9c-7 0-11 6-14.5 13Zm-8 4h16"/>
+        </svg>
+        LaptopCheck
+      </a>
+      <div class="language" role="group" aria-label="Язык / Тил">
+        <button type="button" lang="ru" data-lang="ru" aria-pressed="true">Русский</button>
+        <button type="button" lang="ky" data-lang="ky" aria-pressed="false">Кыргызча</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="hero-copy">
+        <h1 id="title"><span data-text="titleStart">Проверьте</span> <b data-text="titleEnd">ноутбук перед покупкой</b></h1>
+        <p class="intro" data-text="intro">За несколько шагов проверьте, что работает, и сверьте характеристики с объявлением продавца.</p>
+        <div class="actions">
+          <a class="action primary" id="browser-check" href="https://aliciua.github.io/laptopcheck/browser-check.html?quick=1&amp;lang=ru">
+            <span data-text="browser">Проверить в браузере</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5"/></svg>
+          </a>
+          <a class="action secondary" id="download" href="https://github.com/aliciua/laptopcheck/releases/download/v0.2.0/LaptopCheck.exe">
+            <span data-text="download">Скачать для Windows</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-4-4 4 4 4-4M5 16v4h14v-4"/></svg>
+          </a>
+        </div>
+        <p class="system" data-text="system">64-битная Windows (Intel или AMD) · 9,2 МБ</p>
+      </div>
+      <figure class="art">
+        <svg viewBox="0 0 670 560" role="img" aria-labelledby="art-title art-description" xmlns="http://www.w3.org/2000/svg">
+          <title id="art-title" data-text="artTitle">Девушка с ноутбуком</title>
+          <desc id="art-description" data-text="artDescription">Мультяшная девушка с открытыми глазами смотрит на экран открытого ноутбука и машет свободной рукой.</desc>
+          <defs>
+            <g id="bloom">
+              <path d="M0 3C-26 4-35-8-44-24-22-23-9-14 0 3Zm0 0c26 1 35-11 44-27C22-23 9-14 0 3Z" fill="#c3858c"/>
+              <path d="M0 3c-19-7-29-23-25-40 15 5 24 21 25 40Zm0 0c19-7 29-23 25-40C10-32 1-16 0 3Z" fill="#e7b4b6"/>
+              <path d="M0 3c-17-12-12-32 0-45 12 13 17 33 0 45Z" fill="#f7d2cc"/>
+              <path d="M0 3c-20 7-34 2-40-9C-22-11-9-5 0 3Zm0 0c20 7 34 2 40-9C22-11 9-5 0 3Z" fill="#dba4a6"/>
+            </g>
+          </defs>
+          <!-- The landscape runs through the right edge of the panel. -->
+          <path d="M0 367C137 346 204 307 332 316c112 8 225 64 338 29v215H0Z" fill="#c7beb3"/>
+          <path d="M0 461c114-17 170-63 262-60 119 5 208 88 408 43v116H0Z" fill="#a9a26a"/>
+          <path d="M0 508c146 16 253-39 382-15 104 19 196 25 288-6v73H0Z" fill="#88864c"/>
+          <path d="M142 349V203c0-96 77-168 189-168h25c113 0 196 75 196 168v138c-160 53-303 58-410 8Z" fill="#f6dfd4" stroke="#f7eeDF" stroke-width="3.5"/>
+          <path d="M154 344V203c0-90 72-157 177-157h25c106 0 184 69 184 157v133" fill="none" stroke="#be8985" stroke-width="1.65" stroke-dasharray="1 6" stroke-linecap="round"/>
+          <g fill="none" stroke="#f7e9ce" stroke-width="2.1" stroke-linecap="round" opacity=".78">
+            <path d="M0 522c107 19 163 2 227-10m242 20c66 3 136-4 201-22M29 539c52 7 104 6 155-1m358 3c43 0 94-7 128-14"/>
+          </g>
+          <g stroke="#797743" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M616 453c-6-103 15-177 54-226m-48 182c-2-53-25-87-57-105 1 45 15 76 57 105Zm18-119c15-47 2-82-25-103-10 42-2 75 25 103Z" fill="#b3a56b"/>
+            <path d="M647 493c6-95 18-154 23-169m-45 144c-13-22-36-37-69-39 21 28 43 42 69 39Z" fill="#b6ad74"/>
+            <path d="M66 517c-4-69-13-123-41-163m40 135c-11-44-38-65-65-73v44c24 19 35 25 65 29Z" fill="#a29d63"/>
+          </g>
+          <g fill="none" stroke="#f7ecd7" stroke-width="2" stroke-linejoin="round">
+            <path d="M584 116c14 6 22 13 28 26 6-18 14-26 27-31-7 17-14 28-28 34-16-7-25-15-27-29Zm26 30c-18 4-26-1-32-7 12-2 22 0 32 7Z"/>
+            <path d="M187 112v27m-13-13h26m391 66v21m-10-11h20"/>
+          </g>
+          <!-- Geometric cartoon silhouette, with a separate arm for the wave. -->
+          <g stroke="#463039" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M410 138c35-35 83-22 104 11 25 40 7 91-26 123-10 9-13 20-9 30-36-7-54-30-52-65Z" fill="#69495b"/>
+            <path d="M466 152c33 7 47 39 35 70m-6 12c-8 17-14 24-27 32" fill="none" stroke="#936777" stroke-width="2.4"/>
+            <path d="M285 304c-16-18-26-57-22-98-4-52 16-88 51-109 30-18 72-20 103-1 39 24 52 77 48 118-2 25 8 63 21 83-50 15-148 28-201 7Z" fill="#69495b"/>
+            <path d="M279 192c-4-22 8-48 24-65m139 9c9 14 13 27 13 41" fill="none" stroke="#936777" stroke-width="2.5"/>
+            <path d="M333 305c-38-1-61 15-75 43-18 40-35 56-60 52l-7 29c52 16 78-8 101-33l-8 82 157 1-7-95c21 21 49 19 64-2 14-18 13-35 5-53-18-3-23 6-38 3-17-26-36-30-67-29Z" fill="#8d8a49"/>
+            <path d="M306 324c10 27 26 48 61 63m-2-19c16-12 37-25 50-45m-113 71c-4 22-10 49-10 78m135-78 9 80" fill="none" stroke="#676536" stroke-width="2.3"/>
+            <path d="M324 479h100l32 81H278l15-81Z" fill="#e0b5b0"/>
+            <path d="M323 497l-15 63m42-58-6 58m35-63 8 63m14-66 25 66" fill="none" stroke="#b47d83" stroke-width="2.2"/>
+            <path d="M342 276l-2 30 27 29 30-26-2-36Z" fill="#e8aa8c"/>
+            <path d="M338 300l29 35-19 23c-18-8-34-24-42-41Zm30 35 26-35 31 13c-6 22-27 38-40 43Z" fill="#f9e6d0"/>
+            <path d="M313 321c7 14 18 26 31 31m45-3c15-9 25-21 30-33" fill="none" stroke="#b48475" stroke-width="1.8" stroke-dasharray="1 4"/>
+            <path d="M287 209c0-45 32-79 76-80 46-2 82 31 81 78 0 15-4 33-12 47-16 29-36 45-67 46-34 2-56-14-70-39-11-2-17-12-16-22 0-9 3-13 8-15Z" fill="#f0b99d"/>
+            <path d="M288 225c-15-15-12-51-4-71 11-26 42-49 75-49 42-2 76 24 87 58 5 15 4 34-2 45-14-13-20-31-22-51-22 20-54 24-87 9-10 21-29 36-45 39Z" fill="#69495b"/>
+            <path d="M298 166c13-22 32-36 56-40m-9 39c21 9 51 6 67-5" fill="none" stroke="#a67c83" stroke-width="2.3"/>
+            <path d="M421 156l12-6m-8 14 12-7" stroke="#efb3bd" stroke-width="5"/>
+            <path d="M289 236q5-5 9 1" fill="none" stroke="#b47670" stroke-width="2.1"/>
+            <path d="M294 255c-2 7-2 13 4 14 7 0 6-9-4-14Z" fill="#f5d5a3" stroke-width="1.7"/>
+            <path d="M319 206c8-5 17-4 23-1m39-3c7-5 17-6 25-3" fill="none" stroke-width="2.5"/>
+            <path d="M315 221c5-9 20-10 29-1-7 10-24 10-29 1Zm64-3c5-9 20-11 29-3-6 11-23 13-29 3Z" fill="#fff2dc" stroke-width="2.2"/>
+            <ellipse cx="326" cy="222" rx="5.5" ry="7.1" fill="#503344" stroke="none"/>
+            <ellipse cx="390" cy="218" rx="5.5" ry="7.1" fill="#503344" stroke="none"/>
+            <circle cx="327.5" cy="219.5" r="1.6" fill="#fffaf0" stroke="none"/>
+            <circle cx="391.5" cy="215.5" r="1.6" fill="#fffaf0" stroke="none"/>
+            <path d="m315 220-4-3m96-2 5-5" stroke-width="1.8"/>
+            <path d="M358 226c-1 7-1 10 5 10m-13 14c7 8 20 7 27-2" fill="none" stroke="#a55d65" stroke-width="2.4"/>
+            <ellipse cx="317" cy="240" rx="10" ry="4.2" fill="#df8b8d" stroke="none" opacity=".68"/>
+            <ellipse cx="409" cy="237" rx="10" ry="4.2" fill="#df8b8d" stroke="none" opacity=".68"/>
+            <path d="M197 400c-17-4-28-9-42-17-7-4-9-13-2-15 6-2 17 3 25 6-1-6 0-9 4-9 7 0 10 8 16 14l15 9-8 23Z" fill="#f0b99d"/>
+            <!-- The display faces her. Only the exterior lid and side of the base are visible. -->
+            <path d="M152 361l138-20 51 19-2 12-153 23-34-14Z" fill="#a89485"/>
+            <path d="m153 360 134-19 53 19-154 23Z" fill="#efe1d3"/>
+            <path d="m146 359-30-101c-2-6 1-10 7-11l142-20c8-1 11 2 13 9l30 105-152 22c-5 1-8 0-10-4Z" fill="#bb8194"/>
+            <path d="m122 251 142-20 31 105-146 21Z" fill="#d6a1ab" stroke="none"/>
+            <path d="M214 313c-15 2-28-6-31-17 12 0 24 4 31 17Zm0 0c14-4 21-15 19-27-11 6-17 14-19 27Zm0 0c-13-5-17-17-14-29 10 5 16 16 14 29Z" fill="#f6dec7" stroke="#875764" stroke-width="1.6"/>
+            <path d="m184 387 30-5m43-7 21-3m-124-9 149-22" fill="none" stroke="#7a5d5d" stroke-width="2"/>
+            <circle cx="372" cy="406" r="4.5" fill="#e6c9a4" stroke-width="1.5"/>
+            <circle cx="372" cy="434" r="4.5" fill="#e6c9a4" stroke-width="1.5"/>
+            <path d="M400 405c8-6 17-7 24-5m-27 9c9-1 18 1 24 6" fill="none" stroke="#dbb7ae" stroke-width="2"/>
+          </g>
+          <g class="wave-arm" stroke="#463039" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M475 349c-1-10 5-26 11-37l16-36 28 9-20 52c-7 17-12 23-21 24-8 0-13-4-14-12Z" fill="#8d8a49"/>
+            <path d="m500 282 9-22c-5-9-7-17-7-23l-5-11c-2-7 4-10 10-5 4 4 7 7 10 12l6-28c2-8 11-7 10 1l-1 20 12-25c4-8 12-4 10 2l-6 23 12-14c5-6 13-2 10 4l-11 20 11-6c7-4 12 3 6 8l-17 17c-9 10-16 16-28 18l-7 18Z" fill="#f0b99d"/>
+            <path d="M517 236c7 1 14 5 17 13m11-13c1 4 1 7-1 10" fill="none" stroke="#b47670" stroke-width="1.9"/>
+            <path d="m497 282 4-11c10 5 20 7 31 7l-3 12c-10 1-24-1-32-8Z" fill="#f9e6d0" stroke-width="2.5"/>
+            <path d="M501 283c7 3 15 4 24 4" stroke="#b48475" stroke-width="1.65" stroke-dasharray="1 4"/>
+          </g>
+          <path d="M578 177c10 4 18 12 21 21m-11-30c11 3 23 12 26 20" fill="none" stroke="#a36676" stroke-width="1.9" stroke-linecap="round"/>
+          <g stroke="#f9e9d6" stroke-width="2" stroke-linejoin="round">
+            <use href="#bloom" transform="translate(591 469) rotate(9) scale(1.16)"/>
+            <use href="#bloom" transform="translate(637 530) rotate(-4) scale(.8)"/>
+            <use href="#bloom" transform="translate(64 508) rotate(-12) scale(.79)"/>
+          </g>
+        </svg>
+      </figure>
+    </section>
+    <section class="guide inner" aria-labelledby="guide-title">
+      <div class="guide-heading">
+        <h2 id="guide-title" data-text="steps">Как проверить ноутбук</h2>
+        <p data-text="privacy">Результаты проверки хранятся на ноутбуке.</p>
+      </div>
+      <ol class="steps">
+        <li><div><h3 data-text="one">Откройте сайт на ноутбуке</h3><p data-text="oneBody">Используйте устройство, которое хотите купить.</p></div></li>
+        <li><div><h3 data-text="two">Запустите проверку в браузере</h3><p data-text="twoBody">Проверьте экран, клавиатуру и звук. Скачивать приложение для этого не нужно.</p></div></li>
+        <li><div><h3 data-text="three">Сверьте характеристики</h3><p data-text="threeBody">С разрешения продавца запустите приложение для Windows, чтобы проверить память, процессор, диск и батарею.</p></div></li>
+      </ol>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="inner">
+      <p data-text="warning">У тестовой версии приложения пока нет цифровой подписи. Windows может показать предупреждение.</p>
+      <a href="https://github.com/aliciua/laptopcheck/releases/tag/v0.2.0" data-text="release">Информация о выпуске</a>
+    </div>
+  </footer>
+  <script>
+    const labels = [...document.querySelectorAll("[data-text]")];
+    const russian = Object.fromEntries(labels.map(element => [element.dataset.text, element.textContent]));
+    const kyrgyz = {
+      titleStart:"Ноутбукту", titleEnd:"сатып алардан мурун текшериңиз",
+      intro:"Ноутбуктун иштешин бир нече кадамда текшерип, мүнөздөмөлөрүн сатуучунун жарыясы менен салыштырыңыз.",
+      browser:"Браузерде текшерүү", download:"Windows үчүн жүктөп алуу",
+      system:"64 биттик Windows (Intel же AMD) · 9,2 МБ",
+      artTitle:"Ноутбук кармаган кыз",
+      artDescription:"Мультфильм стилинде тартылган кыз көзүн ачып, ноутбуктун экранын карап, бош колу менен булгайт.",
+      steps:"Ноутбукту кантип текшерүү керек", privacy:"Текшерүүнүн жыйынтыгы ноутбуктун өзүндө калат.",
+      one:"Сайтты ноутбуктан ачыңыз", oneBody:"Сатып алгыңыз келген түзмөктү колдонуңуз.",
+      two:"Браузерден текшерүүнү баштаңыз", twoBody:"Экранды, баскычтопту жана үндү текшериңиз. Бул үчүн колдонмону жүктөп алуунун кереги жок.",
+      three:"Мүнөздөмөлөрдү салыштырыңыз", threeBody:"Эс тутумду, процессорду, дискти жана батареяны текшерүү үчүн сатуучунун уруксаты менен Windows колдонмосун ачыңыз.",
+      warning:"Сыноо версиясына санариптик кол коюла элек. Windows эскертүү көрсөтүшү мүмкүн.",
+      release:"Чыгарылыш тууралуу маалымат"
+    };
+    const languageButtons = [...document.querySelectorAll("[data-lang]")];
+    function showLanguage(lang) {
+      const words = lang === "ru" ? russian : kyrgyz;
+      document.documentElement.lang = lang;
+      for (const label of labels) label.textContent = words[label.dataset.text];
+      for (const button of languageButtons) button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+      document.getElementById("browser-check").href = `https://aliciua.github.io/laptopcheck/browser-check.html?quick=1&lang=${lang}`;
+    }
+    for (const button of languageButtons) button.addEventListener("click", () => showLanguage(button.dataset.lang));
+    if (new URLSearchParams(location.search).get("lang") === "ky") showLanguage("ky");
+  </script>
+</body>
+</html>
