@@ -11,6 +11,7 @@ header{border-bottom:1px solid var(--line);background:#fff}.bar{max-width:1100px
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.card,.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(1.15rem,3.5vw,2rem)}.card h2,h1,h2{line-height:1.15;margin:0 0 .65rem}.card p,.lead{color:var(--muted)}.card p{margin:0 0 1.1rem}.panel{max-width:730px;margin:auto}.panel h1{font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.04em}.panel .actions{margin-top:1.3rem}.progress{font-weight:650;color:var(--green);margin:0 0 .7rem}progress{width:100%;height:9px;accent-color:var(--green);display:block;margin:0 0 1.5rem}.stage{margin-top:1rem;padding:1rem;border-radius:12px;background:#edf4ed}.stage:empty{display:none}.key-grid{display:flex;flex-wrap:wrap;gap:.5rem}.key{min-width:3rem;padding:.45rem;text-align:center;border:1px solid var(--line);border-radius:6px;background:white}.key.hit{background:#cae9cf;font-weight:800}.swatch{height:160px;border-radius:8px;border:1px solid #84988b;display:block;width:100%;touch-action:manipulation}.swatch:fullscreen{height:100%;border:0}.preview{width:min(100%,390px);display:block;border-radius:8px}.result{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid var(--line)}.result strong{text-align:right}.result strong[data-result=good]{color:#176447}.result strong[data-result=bad]{color:#9b321a}.report-grid{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:1rem 0}.report-grid dd{margin:0;overflow-wrap:anywhere}.report-grid dt{font-weight:650}.status{color:var(--muted);margin:.7rem 0 0}.status:empty{display:none}.nav{border-top:1px solid var(--line);padding-top:1rem}.pad{display:grid;place-items:center;text-align:center;min-height:100px;background:#fff;border:2px dashed var(--line);border-radius:10px;padding:.5rem}.spec{margin:1rem 0}.spec input{max-width:100%}@media(max-width:620px){.hero,.cards{grid-template-columns:1fr}.illustration{display:none}.hero{padding:1.5rem}.actions button{flex:1 1 auto}}@media print{header,button,input,progress{display:none!important}.panel{border:0}.wrap{padding:0}}
 .seller-panel{margin:1.25rem 0 1.6rem}.seller-panel label{display:block;font-weight:650;margin:.65rem 0 .25rem}.seller-panel input{width:100%;padding:.55rem .7rem;border:1px solid #84988b;border-radius:8px;background:white;color:var(--ink)}.claim-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}.comparison{margin-top:1rem}.comparison small{display:block;color:var(--muted);overflow-wrap:anywhere}.comparison .result[data-result=bad] strong{color:#9b321a}.comparison .result[data-result=good] strong{color:#176447}@media(max-width:500px){.claim-fields{grid-template-columns:1fr}}@media print{.seller-panel form{display:none!important}}
 .history-details{margin:.8rem 0}.history-details summary{cursor:pointer;font-weight:650}.download-link{display:inline-flex;align-items:center;min-height:46px;padding:.65rem 1rem;border:1px solid var(--green);border-radius:12px;color:var(--green);font-weight:700}.download-link:focus-visible{outline:3px solid #945600;outline-offset:4px}@media print{.download-link{display:none}}
+.troubleshooting{margin-top:1.2rem;padding:1rem;border:1px solid #e1cea9;border-radius:12px;background:#fff8e9;color:var(--ink)}.troubleshooting h2{font-size:1.12rem;margin:0 0 .55rem}.troubleshooting ol{margin:.5rem 0;padding-left:1.25rem}.troubleshooting li+li{margin-top:.35rem}.troubleshooting[hidden]{display:none}.result-help{margin:.4rem 0 .9rem;color:var(--muted)}.result-help summary,.share-report summary{cursor:pointer;color:var(--green)}.result-help ol{padding-left:1.3rem}.share-report{margin-top:1.4rem}.share-report input{width:100%;padding:.5rem .65rem;border:1px solid #84988b;border-radius:8px}.share-report label{display:block;font-weight:650;margin-bottom:.35rem}
 </style>
 </head>
 <body>
@@ -47,7 +48,7 @@ const copy = {
 };
 const quickChecks = ["specs","display","keyboard","sound"];
 Object.assign(copy.ky, {
-  browserSummary:"Браузердеги тез текшерүүнүн жыйынтыгы", browserLimits:"Бул жерде экранды, баскычтопту жана үндү текшердик. RAM, процессор, диск жана батарея жөнүндө маалымат алуу үчүн Windows текшергичин ачыңыз.", downloadChecker:"Windows текшергичин жүктөп алуу",
+  browserSummary:"Браузердеги тез текшерүүнүн жыйынтыгы", downloadChecker:"Windows текшергичин жүктөп алуу",
   fullDesc:"Камераны, батареяны, Wi-Fi, Bluetooth, туташтыргычтарды жана корпусту да текшериңиз.",
   detailTitle:"Кошумча мүнөздөмөлөр", cpuCores:"Процессордун өзөктөрү", cpuThreads:"Процессордун агымдары", ramSpeed:"Windows көрсөткөн эс тутум ылдамдыгы",
   displayMode:"Экрандын учурдагы режими", driveModel:"Windows дискинин модели", driveBus:"Дисктин туташуу түрү", freeSpace:"Windows бөлүгүндөгү бош орун",
@@ -66,7 +67,7 @@ Object.assign(copy.ky, {
   historyTitle:"Диск жана Windows тарыхы", historyHint:"Бул даталар ноутбук алгач качан күйгүзүлгөнүн тастыктабайт."
 });
 Object.assign(copy.ru, {
-  browserSummary:"Результаты быстрой проверки в браузере", browserLimits:"Здесь можно проверить экран, клавиатуру и звук. Чтобы узнать объём памяти, модель процессора, размер диска и состояние батареи, откройте приложение для Windows.", downloadChecker:"Скачать приложение для Windows",
+  browserSummary:"Результаты быстрой проверки в браузере", downloadChecker:"Скачать приложение для Windows",
   fullDesc:"Дополнительно проверьте камеру, батарею, Wi-Fi, Bluetooth, разъёмы и корпус.",
   detailTitle:"Подробные характеристики", cpuCores:"Ядра процессора", cpuThreads:"Потоки процессора", ramSpeed:"Скорость памяти по данным Windows",
   displayMode:"Текущий режим экрана", driveModel:"Модель диска с Windows", driveBus:"Тип подключения диска", freeSpace:"Свободное место в разделе Windows",
@@ -85,21 +86,116 @@ Object.assign(copy.ru, {
   historyTitle:"Сведения о диске и история Windows", historyHint:"Эти даты не подтверждают дату первого включения ноутбука."
 });
 const fullChecks = [...quickChecks,"pad","camera","mic","charge","battery","ports","wifi","hinges","caseCheck","bluetooth","externalDisplay","headphone","lidWake"];
+Object.assign(copy.ru, {
+  helpTitle:"Что попробовать", retryCheck:"Повторить проверку", recordIssue:"Записать проблему и продолжить",
+  helpForResult:"Что можно попробовать", moreBrowser:"Продолжить полную проверку в браузере",
+  browserLimits:"Для автоматического чтения памяти, процессора, размера диска и ёмкости батареи используйте приложение для Windows.",
+  share:"Поделиться отчётом", shareConsent:"В отчёт попадут только результаты проверок. Любой, у кого есть ссылка, сможет открыть отчёт в течение 24 часов.",
+  createLink:"Создать ссылку", reportLink:"Ссылка на отчёт", copyLink:"Скопировать ссылку", copied:"Ссылка скопирована.",
+  shareError:"Не удалось создать ссылку. Попробуйте ещё раз.", sharedTitle:"Отчёт о проверке",
+  sharedLoading:"Загружаем отчёт…", sharedMissing:"Отчёт не найден или срок действия ссылки истёк."
+});
+Object.assign(copy.ky, {
+  helpTitle:"Эмне кылып көрүүгө болот", retryCheck:"Кайра текшерүү", recordIssue:"Көйгөйдү жазып, улантуу",
+  helpForResult:"Эмне кылып көрүүгө болот", moreBrowser:"Браузерде толук текшерүүнү улантуу",
+  browserLimits:"Эс тутумду, процессорду, диск көлөмүн жана батареянын сыйымдуулугун автоматтык окуу үчүн Windows колдонмосун ачыңыз.",
+  share:"Отчёт менен бөлүшүү", shareConsent:"Отчётко текшерүүнүн жыйынтыктары гана кирет. Шилтемеси бар адам отчётту 24 саат бою ача алат.",
+  createLink:"Шилтеме түзүү", reportLink:"Отчёттун шилтемеси", copyLink:"Шилтемени көчүрүү", copied:"Шилтеме көчүрүлдү.",
+  shareError:"Шилтеме түзүлгөн жок. Кайра аракет кылыңыз.", sharedTitle:"Текшерүү отчёту",
+  sharedLoading:"Отчёт ачылып жатат…", sharedMissing:"Отчёт табылган жок же шилтеменин мөөнөтү бүттү."
+});
+const troubleshootingTips = {
+  specs:{
+    ru:["Оставьте окно приложения открытым и повторите сканирование. При импорте выберите JSON-отчёт LaptopCheck.","Если данные недоступны, попросите продавца показать характеристики в Windows."],
+    ky:["Колдонмонун терезесин ачык калтырып, кайра текшериңиз. Файл ачып жатсаңыз, LaptopCheck чыгарган JSON отчётун тандаңыз.","Маалымат чыкпаса, сатуучудан Windows'тагы мүнөздөмөлөрдү көрсөтүүнү сураңыз."]
+  },
+  display:{
+    ru:["Поменяйте цвет и немного измените яркость. Посмотрите на экран под другим углом, чтобы исключить блик.","Проверьте ту же точку или полосу на рабочем столе. Запишите проблему, если она видна и там."],
+    ky:["Түстү алмаштырып, жарыктыгын бир аз өзгөртүңүз. Экранды башка бурчтан караңыз.","Ошол такты же сызыкты иш тактасынан да караңыз. Ал жактан да көрүнсө, көйгөйдү жазыңыз."]
+  },
+  keyboard:{
+    ru:["Щёлкните внутри поля проверки и нажмите проблемную клавишу снова.","Попробуйте её в обычном текстовом поле. Браузер может не получать системные клавиши. Запишите проблему, если обычная клавиша нигде не срабатывает."],
+    ky:["Текшерүү талаасын басып, көйгөйлүү баскычты кайра басыңыз.","Аны кадимки текст талаасында да сынаңыз. Браузер айрым системалык баскычтарды кармабайт. Кадимки баскыч эч жерде иштебесе, көйгөйдү жазыңыз."]
+  },
+  sound:{
+    ru:["Проверьте звук на вкладке и в системе. Прибавьте громкость и снова включите тест.","Попросите продавца выбрать встроенные динамики вместо наушников или Bluetooth. Отметьте, если звук отсутствует или хрипит."],
+    ky:["Өтмөктүн жана системанын үнүн текшериңиз. Үндү бир аз көтөрүп, кайра ойнотуңуз.","Сатуучудан кулакчындын же Bluetooth'тун ордуна ноутбуктун динамигин тандоону сураңыз. Үн чыкпаса же кырылдаса, жазыңыз."]
+  },
+  pad:{
+    ru:["С разрешения продавца отключите внешнюю мышь. Попробуйте отдельно движение курсора, нажатие и прокрутку.","Попросите продавца проверить, включён ли тачпад. Повторите проверку."],
+    ky:["Сатуучунун уруксаты менен тышкы чычканды ажыратыңыз. Көрсөткүчтү жылдырууну, басууну жана сыдырууну өзүнчө сынаңыз.","Сатуучудан тачпад күйгүзүлгөнүн текшерүүнү сурап, кайра сынаңыз."]
+  },
+  camera:{
+    ru:["Откройте шторку камеры, если она есть, и разрешите камеру для этой страницы.","С разрешения продавца закройте программы видеозвонков и повторите тест. Если доступ закрыт настройками, отметьте «Не удалось проверить»."],
+    ky:["Камеранын жапкычы болсо, аны ачып, бул баракка уруксат бериңиз.","Сатуучунун уруксаты менен видео чалуу колдонмолорун жаап, кайра текшериңиз. Уруксат бөгөттөлсө, «Текшере алган жокмун» деп белгилеңиз."]
+  },
+  mic:{
+    ru:["Разрешите доступ для этой страницы и проверьте кнопку выключения микрофона.","Попросите продавца выбрать встроенный микрофон вместо гарнитуры. Если доступ закрыт, отметьте «Не удалось проверить»."],
+    ky:["Бул баракка микрофонду колдонууга уруксат бериңиз жана микрофон өчүрүлбөгөнүн текшериңиз.","Сатуучудан кулакчындын ордуна ноутбуктун микрофонун тандоону сураңыз. Уруксат жок болсо, «Текшере алган жокмун» деп белгилеңиз."]
+  },
+  charge:{
+    ru:["Попросите продавца переподключить подходящую зарядку и попробовать рабочую розетку.","При полном заряде зарядка может приостановиться. При низком заряде попросите проверить другой совместимый блок питания."],
+    ky:["Сатуучудан ылайыктуу кубаттагычты кайра туташтырып, иштеген розеткада сынап көрүүнү сураңыз.","Батарея толук болсо, кубаттоо токтошу мүмкүн. Заряд аз болсо, башка шайкеш кубаттагыч менен сынап көрүүнү сураңыз."]
+  },
+  battery:{
+    ru:["Если заряд почти нулевой, попросите продавца немного зарядить ноутбук и повторить тест.","Если после отключения питания ноутбук сразу выключается, запишите проблему. Этот тест не измеряет время работы от батареи."],
+    ky:["Заряд дээрлик түгөнсө, сатуучудан ноутбукту бир аз кубаттап, кайра сынап көрүүнү сураңыз.","Кубаттагычты ажыратканда ноутбук дароо өчсө, көйгөйдү жазыңыз. Бул тест батарея канча саатка жетерин көрсөтпөйт."]
+  },
+  ports:{
+    ru:["Проверьте аксессуар в другом разъёме или на другом устройстве, затем попробуйте снова.","Проверяйте отдельно передачу данных, зарядку и вывод изображения через USB‑C."],
+    ky:["Шайманды башка уячага же башка түзмөккө туташтырып сынап, кайра текшериңиз.","USB‑C аркылуу маалымат өткөрүүнү, кубаттоону жана сүрөт чыгарууну өзүнчө текшериңиз."]
+  },
+  wifi:{
+    ru:["Выключите режим полёта с разрешения продавца и проверьте, к какой сети подключён ноутбук.","Откройте сайт, который загружается на телефоне в той же сети. Если на ноутбуке не работает, попросите попробовать другую сеть."],
+    ky:["Сатуучунун уруксаты менен учуу режимин өчүрүп, ноутбук кайсы тармакка туташканын караңыз.","Ошол эле тармакта телефондон ачылган сайтты ачып көрүңүз. Иштебесе, башка тармакта сынап көрүүнү сураңыз."]
+  },
+  hinges:{
+    ru:["На ровном столе попросите продавца медленно открыть крышку, придерживая основание.","При треске, люфте или заедании остановитесь и запишите проблему. Крышку не нужно выправлять или открывать силой."],
+    ky:["Тегиз столдо сатуучудан түбүн кармап, капкагын акырын ачууну сураңыз.","Кычыраса, бошоп же тыгылып калса, токтоп, көйгөйдү жазыңыз. Капкакты күч менен ачпаңыз."]
+  },
+  caseCheck:{
+    ru:["Осмотрите края при хорошем свете и проверьте, ровно ли ноутбук стоит на столе.","При вздутии или приподнятом тачпаде прекратите проверку. Не давите на корпус."],
+    ky:["Корпустун четтерин жарыкта карап, ноутбук столдо тегиз турганын текшериңиз.","Корпус шишип же тачпад көтөрүлүп турса, текшерүүнү токтотуңуз. Корпусту баспаңыз."]
+  },
+  bluetooth:{
+    ru:["Зарядите аксессуар или проверьте его заряд. Включите на нём режим подключения и поднесите к ноутбуку.","Попросите продавца проверить, включён ли Bluetooth, и попробовать другой аксессуар."],
+    ky:["Шаймандын зарядын текшериңиз. Туташтыруу режимин күйгүзүп, ноутбукка жакындатыңыз.","Сатуучудан Bluetooth күйгүзүлгөнүн текшерип, башка шайман менен сынап көрүүнү сураңыз."]
+  },
+  externalDisplay:{
+    ru:["Выберите правильный вход на мониторе. Проверьте кабель на другом устройстве.","Попросите продавца открыть параметры экрана. Для USB‑C уточните, поддерживает ли разъём вывод изображения."],
+    ky:["Монитордон керектүү кирүүнү тандаңыз. Кабелди башка түзмөктө текшериңиз.","Сатуучудан экран жөндөөлөрүн ачууну сураңыз. USB‑C уячасы сүрөт чыгарууну колдой турганын тактаңыз."]
+  },
+  headphone:{
+    ru:["Попробуйте заведомо рабочие наушники и проверьте штекер. Включите тест на небольшой громкости.","Попросите продавца выбрать проводные наушники для вывода и проверьте обе стороны."],
+    ky:["Иштеген кулакчын менен сынап, штекерди текшериңиз. Үндү акырын ойнотуңуз.","Сатуучудан зымдуу кулакчынды үн чыгаргыч кылып тандоону сурап, эки жагын тең текшериңиз."]
+  },
+  lidWake:{
+    ru:["Подождите несколько секунд. С разрешения продавца откройте крышку или кратко нажмите кнопку питания.","Если ноутбук не просыпается, попросите продавца подключить питание и показать, как он его обычно будит."],
+    ky:["Бир нече секунд күтө туруңуз. Сатуучунун уруксаты менен капкагын ачыңыз же күйгүзүү баскычын кыска басыңыз.","Ойгонбосо, сатуучудан кубаттагычты туташтырып, адатта кантип ойготорун көрсөтүүнү сураңыз."]
+  }
+};
 const app = document.querySelector("#app");
 const localChecker = document.documentElement.hasAttribute("data-local-checker") &&
   location.protocol === "http:" && ["localhost", "127.0.0.1"].includes(location.hostname);
 const params = new URLSearchParams(location.search);
 const browserQuick = !localChecker && params.get("quick") === "1";
+const reportBackend = document.documentElement.hasAttribute("data-website-reports");
+const sharedView = reportBackend && params.get("report") === "1";
 const browserChecks = quickChecks.slice(1);
+const browserFullChecks = fullChecks.slice(1);
 let lang = params.get("lang") === "ky" ? "ky" : "ru";
 let mode = browserQuick ? "quick" : null;
 let step = 0;
+let troubleshooting = false;
+let shareLink = "";
+let sharedResults;
 let results = {};
 let report = null;
 let seller = {claims:{}, compared:false};
 let cleanup = () => {};
 const t = key => copy[lang][key];
-const checks = () => browserQuick ? browserChecks : mode === "full" ? fullChecks : quickChecks;
+const checks = () => browserQuick ? (mode === "full" ? browserFullChecks : browserChecks) :
+  mode === "full" ? fullChecks : quickChecks;
 const landing = () => `./?lang=${lang}`;
 const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
   "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
@@ -109,9 +205,14 @@ function button(id, label, primary = false) {
   return `<button type="button" id="${id}"${primary ? ' class="primary"' : ""}>${t(label)}</button>`;
 }
 function on(id, action) { document.getElementById(id).addEventListener("click", action); }
+function tipList(check) {
+  return `<ol>${troubleshootingTips[check][lang].map(tip => `<li>${escapeHtml(tip)}</li>`).join("")}</ol>`;
+}
 function start(selected) {
   mode = selected;
   step = 0;
+  troubleshooting = false;
+  shareLink = "";
   results = {};
   report = null;
   seller = {claims:{}, compared:false};
@@ -122,7 +223,9 @@ function render(focus = true) {
   cleanup = () => {};
   document.documentElement.lang = lang;
   for (const code of ["ky","ru"]) document.getElementById(code).setAttribute("aria-pressed", String(code === lang));
-  if (!mode) {
+  if (sharedView) {
+    renderSharedReport();
+  } else if (!mode) {
     app.innerHTML = `<section class="hero"><div><h1 tabindex="-1">${t("title")}</h1><p>${t("intro")}</p></div><div class="illustration" aria-hidden="true"><div class="screen"><div class="screen-mark">✓</div></div><div class="base"></div></div></section>
       <div class="cards">${["quick","full"].map(kind => `<section class="card"><h2>${t(kind)}</h2><p>${t(kind+"Desc")}</p>${button(kind+"Start",kind,kind==="quick")}</section>`).join("")}</div>`;
     on("quickStart", () => start("quick"));
@@ -139,29 +242,65 @@ function renderStep(check) {
     <progress aria-label="${t("step")}" value="${step+1}" max="${checks().length}"></progress>
     <h1 tabindex="-1">${t(check)}</h1><p class="lead">${t(check === "specs" ? (localChecker ? "localSpecDesc" : "specDesc") : check+"Hint")}</p>
     <div class="stage" id="stage"></div><p class="status" id="status" role="status"></p>
-    <div class="actions">${check === "specs" ? button("next","next",true) : button("good","good",true)+button("bad","bad")+button("skip","skip")}</div>
+    <div class="actions">${check === "specs" ? button("next","next",true)+button("bad","bad") :
+      button("good","good",true)+button("bad","bad")+button("skip","skip")}</div>
+    <section class="troubleshooting" id="troubleshooting" aria-labelledby="trouble-title"${troubleshooting ? "" : " hidden"}>
+      <h2 id="trouble-title" tabindex="-1">${t("helpTitle")}</h2>${tipList(check)}
+      <div class="actions">${button("retry-check","retryCheck",true)}${button("record-issue","recordIssue")}</div>
+    </section>
     <div class="actions nav">${button("back",step ? "back" : "home")}</div></section>`;
+  const help = document.getElementById("troubleshooting");
+  const problemButton = document.getElementById("bad");
+  function setHelp(open) {
+    troubleshooting = open;
+    help.hidden = !open;
+    problemButton.setAttribute("aria-expanded",String(open));
+  }
+  function continueToNext(result) {
+    results[check] = result;
+    troubleshooting = false;
+    step++;
+    render();
+  }
+  problemButton.setAttribute("aria-controls","troubleshooting");
+  setHelp(troubleshooting);
+  on("bad", () => {
+    setHelp(true);
+    document.getElementById("trouble-title").focus();
+  });
+  on("record-issue", () => continueToNext("bad"));
+  on("retry-check", () => {
+    setHelp(false);
+    if (check !== "specs") {
+      render();
+      return;
+    }
+    const retry = document.getElementById(localChecker ? "retryScan" : "file");
+    retry.focus();
+    if (localChecker) retry.click();
+  });
   on("back", () => {
+    troubleshooting = false;
     if (step) step--;
     else if (browserQuick) { location.href = landing(); return; }
     else mode = null;
     render();
   });
-  if (check === "specs") on("next", () => { step++; render(); });
-  else for (const result of ["good","bad","skip"]) {
-    on(result, () => { results[check] = result; step++; render(); });
+  if (check === "specs") on("next", () => continueToNext(report ? "good" : "skip"));
+  else for (const result of ["good","skip"]) {
+    on(result, () => continueToNext(result));
   }
   const stage = document.getElementById("stage");
   const status = message => { document.getElementById("status").textContent = message; };
-  if (check === "specs") setupReport(stage,status);
+  if (check === "specs") setupReport(stage,status,() => setHelp(true));
   if (check === "display") setupDisplay(stage);
   if (check === "keyboard") setupKeyboard(stage,status);
-  if (check === "sound" || check === "headphone") setupSound(stage,status);
+  if (check === "sound" || check === "headphone") setupSound(stage,status,() => setHelp(true));
   if (check === "pad") {
     stage.innerHTML = `<button id="tap" class="pad">${t("tap")}</button>`;
     on("tap", () => status(t("tapped")));
   }
-  if (["camera","mic"].includes(check)) setupMedia(check,stage,status);
+  if (["camera","mic"].includes(check)) setupMedia(check,stage,status,() => setHelp(true));
 }
 function reportHtml() {
   if (!report) return "";
@@ -227,7 +366,7 @@ function readReport(data, fromWindows = false) {
   }
   return fields;
 }
-function setupReport(stage,status) {
+function setupReport(stage,status,onFailure) {
   if (localChecker) {
     stage.innerHTML = `<div id="imported">${reportHtml()}</div>${button("retryScan","retryScan")}`;
     let controller;
@@ -246,7 +385,7 @@ function setupReport(stage,status) {
         stage.querySelector("#imported").innerHTML = reportHtml();
         status(t("scanned"));
       } catch {
-        if (stage.isConnected) status(t("scanFailed"));
+        if (stage.isConnected) { status(t("scanFailed")); onFailure(); }
       } finally {
         if (stage.isConnected) retry.disabled = false;
       }
@@ -272,6 +411,7 @@ function setupReport(stage,status) {
       report = null;
       stage.querySelector("#imported").replaceChildren();
       status(t("invalid"));
+      onFailure();
     }
   });
 }
@@ -302,7 +442,7 @@ function setupKeyboard(stage,status) {
     status(`${t("seen")}: ${hit.size} / ${keys.length}`);
   });
 }
-function setupSound(stage,status) {
+function setupSound(stage,status,onFailure) {
   stage.innerHTML = button("play","play");
   let context;
   cleanup = () => { if (context && context.state !== "closed") context.close().catch(() => {}); };
@@ -319,10 +459,10 @@ function setupSound(stage,status) {
       tone.connect(volume).connect(context.destination);
       tone.start();
       tone.stop(context.currentTime+0.6);
-    } catch { if (stage.isConnected) status(t("blocked")); }
+    } catch { if (stage.isConnected) { status(t("blocked")); onFailure(); } }
   });
 }
-function setupMedia(check,stage,status) {
+function setupMedia(check,stage,status,onFailure) {
   stage.innerHTML = button("enable","enable");
   let stream, context, animation;
   cleanup = () => {
@@ -367,7 +507,7 @@ function setupMedia(check,stage,status) {
       }
     } catch {
       stream?.getTracks().forEach(track => track.stop());
-      if (stage.isConnected) { enable.disabled = false; status(t("blocked")); }
+      if (stage.isConnected) { enable.disabled = false; status(t("blocked")); onFailure(); }
     }
   });
 }
@@ -434,20 +574,104 @@ function setupSellerComparison() {
   });
 }
 
-function inspectionResults(keys) {
+function inspectionResults(keys, readings = results) {
   return keys.map(key => {
-    const result = results[key] || "unseen";
-    return `<div class="result"><span>${t(key)}</span><strong data-result="${result}">${t(result)}</strong></div>`;
+    const result = readings[key] || "unseen";
+    return `<div class="result"><span>${t(key)}</span><strong data-result="${result}">${t(result)}</strong></div>${result === "bad" ?
+      `<details class="result-help"><summary>${t("helpForResult")}</summary>${tipList(key)}</details>` : ""}`;
   }).join("");
+}
+
+async function reportRequest(path, data) {
+  const response = await fetch(path, {
+    method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data)
+  });
+  if (!response.ok) throw new Error("Report request failed");
+  return response.json();
+}
+
+function setupShareReport() {
+  const panel = document.getElementById("share-report");
+  const notice = document.getElementById("share-status");
+  const linkForm = document.getElementById("share-link-form");
+  const input = document.getElementById("share-link");
+  function showLink() {
+    if (!shareLink) return;
+    panel.open = true;
+    linkForm.hidden = false;
+    input.value = shareLink;
+  }
+  showLink();
+  on("create-report-link", async () => {
+    const create = document.getElementById("create-report-link");
+    create.disabled = true;
+    notice.textContent = "";
+    try {
+      const {token} = await reportRequest("/api/reports",{results});
+      if (!panel.isConnected) return;
+      const url = new URL("./browser-check.html",location.href);
+      url.search = `?report=1&lang=${lang}`;
+      url.hash = token;
+      shareLink = url.href;
+      showLink();
+      input.focus();
+      input.select();
+    } catch {
+      if (panel.isConnected) notice.textContent = t("shareError");
+    } finally {
+      create.disabled = false;
+    }
+  });
+  on("copy-report-link", async () => {
+    try {
+      await navigator.clipboard.writeText(input.value);
+      notice.textContent = t("copied");
+    } catch {
+      input.focus();
+      input.select();
+    }
+  });
+}
+
+function renderSharedReport() {
+  const content = sharedResults ?
+    inspectionResults(browserFullChecks.filter(key => Object.hasOwn(sharedResults,key)),sharedResults) :
+    `<p role="status">${t(sharedResults === undefined ? "sharedLoading" : "sharedMissing")}</p>`;
+  app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("sharedTitle")}</h1>${content}
+    <div class="actions"><a class="download-link" href="${landing()}">${t("home")}</a></div></section>`;
+}
+
+async function loadSharedReport() {
+  const token = location.hash.slice(1);
+  try {
+    const report = await reportRequest("/api/reports/view",{token});
+    sharedResults = report.results;
+  } catch {
+    sharedResults = null;
+  }
+  render(false);
 }
 
 function renderSummary() {
   if (browserQuick) {
-    app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("browserSummary")}</h1>
-      ${inspectionResults(browserChecks)}
+    app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t(mode === "quick" ? "browserSummary" : "summary")}</h1>
+      ${inspectionResults(checks())}
       <p class="lead">${t("browserLimits")}</p>
-      <div class="actions"><a class="download-link" href="${landing()}#download">${t("downloadChecker")}</a>${button("restart","restart")}</div></section>`;
+      <div class="actions">${mode === "quick" ? button("browser-extra","moreBrowser",true) : ""}
+      <a class="download-link" href="${landing()}#download">${t("downloadChecker")}</a>${button("restart","restart")}</div>
+      ${reportBackend ? `<details class="share-report" id="share-report"><summary>${t("share")}</summary>
+        <p>${t("shareConsent")}</p>${button("create-report-link","createLink")}
+        <div class="spec" id="share-link-form" hidden><label for="share-link">${t("reportLink")}</label>
+          <input id="share-link" type="url" readonly><div class="actions">${button("copy-report-link","copyLink")}</div></div>
+        <p class="status" id="share-status" role="status"></p></details>` : ""}</section>`;
+    if (mode === "quick") on("browser-extra", () => {
+      mode = "full";
+      step = browserChecks.length;
+      shareLink = "";
+      render();
+    });
     on("restart", () => start("quick"));
+    if (reportBackend) setupShareReport();
     return;
   }
   app.innerHTML = `<section class="panel"><h1 tabindex="-1">${t("summary")}</h1><p class="lead">${t("summaryHint")}</p>
@@ -458,7 +682,7 @@ function renderSummary() {
     ).join("")}</div><div class="actions"><button class="primary" type="submit">${t("compare")}</button></div></form>
     <div class="comparison" id="comparison" aria-live="polite"></div></section>
     <h2>${t("specs")}</h2>${report ? reportHtml() : `<p>${t("unseen")}</p>`}
-    ${inspectionResults(checks().slice(1))}
+    ${inspectionResults(results.specs === "bad" ? checks() : checks().slice(1))}
     <div class="actions">${mode === "quick" ? button("extra","extra",true) : ""}${button("print","print")}${button("restart","restart")}</div></section>`;
   if (mode === "quick") on("extra", () => { mode = "full"; step = quickChecks.length; render(); });
   setupSellerComparison();
@@ -467,6 +691,7 @@ function renderSummary() {
 }
 for (const code of ["ky","ru"]) on(code, () => { if (lang !== code) { lang = code; render(false); } });
 render(false);
+if (sharedView) loadSharedReport();
 </script>
 </body>
 </html>

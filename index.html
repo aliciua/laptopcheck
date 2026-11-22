@@ -143,7 +143,7 @@
         <h1 id="title"><span data-text="title">Проверьте ноутбук</span> <em data-text="titleEnd">перед покупкой</em></h1>
         <p class="intro" data-text="intro">Проверьте технику на месте и сравните её характеристики с объявлением продавца.</p>
         <div class="actions">
-          <a class="cta primary" id="browser-quick" href="https://aliciua.github.io/laptopcheck/browser-check.html?quick=1&amp;lang=ru"><span data-text="browser">Проверить в браузере</span><span aria-hidden="true">↗</span></a>
+          <a class="cta primary" id="browser-quick" href="./browser-check.html?quick=1&amp;lang=ru"><span data-text="browser">Проверить в браузере</span><span aria-hidden="true">↗</span></a>
           <a class="cta secondary" id="download" href="https://github.com/aliciua/laptopcheck/releases/latest/download/LaptopCheck.exe"><span data-text="download">Скачать для Windows</span><span aria-hidden="true">↓</span></a>
         </div>
         <small class="requirements" data-text="requirements">64-битная Windows (Intel или AMD) · 10,2 МБ</small>
@@ -235,7 +235,7 @@
     <section id="check-modes" class="comparison" aria-label="Варианты проверки">
       <div class="mode">
         <h2 data-text="fastTitle">Быстрая проверка</h2>
-        <p data-text="fastText">Проверьте экран, клавиатуру и звук прямо в браузере, без скачивания.</p>
+        <p data-text="fastText">Проверьте экран, клавиатуру и звук прямо в браузере. После первых трёх тестов можно перейти к дополнительным проверкам.</p>
       </div>
       <div class="mode">
         <h2 data-text="fullTitle">Приложение для Windows</h2>
@@ -268,7 +268,7 @@
       browser:"Браузерде текшерүү", download:"Windows үчүн жүктөп алуу",
       requirements:"64 биттик Windows (Intel же AMD) · 10,2 МБ",
       artTitle:"Ноутбук кармаган кыз", artDescription:"Тартылган кыз ачык ноутбуктун экранын өзүнө каратып кармап, бош колу менен булгайт. Айланада лотос гүлдөрү бар.",
-      fastTitle:"Тез текшерүү", fastText:"Экранды, баскычтопту жана үндү түз эле браузерден текшериңиз. Жүктөп алуунун кереги жок.",
+      fastTitle:"Тез текшерүү", fastText:"Экранды, баскычтопту жана үндү браузерден текшериңиз. Алгачкы үч тесттен кийин кошумча текшерүүлөргө өтсөңүз болот.",
       fullTitle:"Windows үчүн колдонмо", fullText:"Процессордун моделин, эс тутумдун көлөмүн, батареянын абалын жана диск тууралуу маалыматты көрүңүз.",
       steps:"Кантип колдонуу керек",
       first:"Бул баракты сатып алгыңыз келген ноутбуктан ачыңыз.",
@@ -284,7 +284,7 @@
       for (const label of labels) label.textContent = words[label.dataset.text];
       for (const button of buttons) button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
       document.getElementById("check-modes").setAttribute("aria-label", lang === "ky" ? "Текшерүү жолдору" : "Варианты проверки");
-      document.getElementById("browser-quick").href = `https://aliciua.github.io/laptopcheck/browser-check.html?quick=1&lang=${lang}`;
+      document.getElementById("browser-quick").href = `./browser-check.html?quick=1&lang=${lang}`;
     }
     for (const button of buttons) button.addEventListener("click", () => setLanguage(button.dataset.lang));
     if (new URLSearchParams(location.search).get("lang") === "ky") setLanguage("ky");
